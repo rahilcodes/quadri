@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Arch from './Arch';
+import Picture, { type PictureSource } from './Picture';
 import styles from './Hero.module.css';
 import { site } from '@/lib/site';
 
-export default function Hero() {
+export default function Hero({ portrait }: { portrait: PictureSource }) {
   const { hero } = site;
   const rise = (i: number) => ({ '--i': i }) as React.CSSProperties;
 
@@ -32,12 +32,10 @@ export default function Hero() {
           <Arch variant="mask" id="arch-tall" shape="tall" />
           <Arch variant="mask" id="arch-compact" shape="compact" />
           <div className={styles.portrait}>
-            <Image
-              src={hero.portrait.src}
+            <Picture
+              image={portrait}
               alt={hero.portrait.alt}
-              fill
               priority
-              fetchPriority="high"
               sizes="(min-width: 1440px) 480px, (min-width: 1024px) 34vw, (min-width: 640px) 420px, 100vw"
             />
           </div>

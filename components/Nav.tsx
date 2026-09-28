@@ -1,53 +1,18 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
 import Arch from './Arch';
 import styles from './Nav.module.css';
 import { site } from '@/lib/site';
 
-const SCROLL_THRESHOLD = 8; // px of scroll before the bar turns ivory
-
+/**
+ * Markup only. Behaviour (ivory after scroll, opening the menu) is in
+ * src/scripts/site.ts, which toggles data-scrolled on the header and calls
+ * showModal() on the menu: a modal <dialog> supplies the focus trap, Escape
+ * to close, and makes the page behind inert.
+ */
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  const menu = useRef<HTMLDialogElement>(null);
   const { nav, contact } = site;
 
-  useEffect(() => {
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      setScrolled(window.scrollY > SCROLL_THRESHOLD);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(frame);
-    };
-  }, []);
-
-  // The overlay only exists below 1024. If the window grows past that while it is open, close it.
-  useEffect(() => {
-    const wide = window.matchMedia('(min-width: 1024px)');
-    const onChange = () => wide.matches && menu.current?.close();
-    wide.addEventListener('change', onChange);
-    return () => wide.removeEventListener('change', onChange);
-  }, []);
-
-  // <dialog>.showModal() supplies the focus trap, Escape to close, and makes the page behind inert.
-  const openMenu = () => {
-    menu.current?.showModal();
-    document.documentElement.classList.add('dialog-open');
-    setOpen(true);
-  };
-  const closeMenu = () => menu.current?.close();
-
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={styles.header} data-nav="">
       <div className={`container ${styles.bar}`}>
         <a className={styles.brand} href="#main" aria-label={`${site.name}, home`}>
           <Arch className={`${styles.mark} arch-draw`} size="var(--mark-width)" stroke="var(--mark-stroke)" />
@@ -77,25 +42,22 @@ export default function Nav() {
           className={styles.burger}
           aria-label="Open menu"
           aria-haspopup="dialog"
-          aria-expanded={open}
-          onClick={openMenu}
+          aria-expanded="false"
+          data-menu-open=""
         >
           <span />
           <span />
         </button>
       </div>
 
-      <dialog ref={menu} className={`${styles.menu} on-ink`} aria-label="Menu" onClose={() => {
-          document.documentElement.classList.remove('dialog-open');
-          setOpen(false);
-        }}>
+      <dialog className={`${styles.menu} on-ink`} aria-label="Menu" data-menu="">
         <div className={`container ${styles.menuInner}`}>
           <div className={styles.menuBar}>
             <span className={styles.brand}>
               <Arch className={styles.mark} size="var(--mark-width)" stroke="var(--mark-stroke)" />
               <span>{site.shortName}</span>
             </span>
-            <button type="button" className={styles.close} aria-label="Close menu" onClick={closeMenu}>
+            <button type="button" className={styles.close} aria-label="Close menu" data-menu-close="">
               <span />
               <span />
             </button>
@@ -105,7 +67,7 @@ export default function Nav() {
             <ul className={styles.menuLinks}>
               {nav.links.map((link, i) => (
                 <li key={link.href} style={{ '--i': i } as React.CSSProperties}>
-                  <a href={link.href} onClick={closeMenu}>
+                  <a href={link.href} data-menu-close="">
                     {link.label}
                   </a>
                 </li>
@@ -117,7 +79,7 @@ export default function Nav() {
             <div className={styles.divider} aria-hidden="true">
               <Arch size={20} stroke={2} />
             </div>
-            <a className={`button ${styles.menuCta}`} href={nav.cta.href} onClick={closeMenu}>
+            <a className={`button ${styles.menuCta}`} href={nav.cta.href} data-menu-close="">
               {nav.cta.label}
             </a>
             <p className="label">{site.lockup}</p>

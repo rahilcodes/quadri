@@ -7,7 +7,8 @@ export default function Contact() {
   const { contact } = site;
 
   return (
-    <section id="contact" className={`${styles.section} on-ivory`} aria-labelledby="contact-title">
+    <section id="contact" className="below-fold on-ivory"
+      style={{ '--estimate': 'var(--estimate-contact)' } as React.CSSProperties} aria-labelledby="contact-title">
       <div className={`container ${styles.inner}`}>
         <div className={styles.lead}>
           <p className="label">{contact.label}</p>

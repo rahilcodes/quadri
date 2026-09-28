@@ -5,7 +5,7 @@ import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
 
-const base = process.argv[2] ?? 'http://localhost:3000';
+const base = process.argv[2] ?? 'http://localhost:3100';
 const widths = (process.argv[3] ?? '320,390,640,768,1024,1280,1440,1920').split(',').map(Number);
 const sectionShots = new Set([390, 768, 1024, 1440]);
 const out = path.resolve('.screens');

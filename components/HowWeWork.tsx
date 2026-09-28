@@ -6,7 +6,8 @@ export default function HowWeWork() {
   const { process } = site;
 
   return (
-    <section className={`${styles.section} on-ivory`} aria-labelledby="process-title">
+    <section className="below-fold on-ivory"
+      style={{ '--estimate': 'var(--estimate-process)' } as React.CSSProperties} aria-labelledby="process-title">
       <div className={`container ${styles.inner}`}>
         <header className={styles.header} data-reveal="">
           <p className="label">{process.label}</p>

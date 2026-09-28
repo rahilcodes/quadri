@@ -6,7 +6,10 @@ export default function Footer() {
   const { footer, nav, disclaimer } = site;
 
   return (
-    <footer className={`${styles.footer} on-ink`}>
+    <footer
+      className={`${styles.footer} below-fold on-ink`}
+      style={{ '--estimate': 'var(--estimate-footer)' } as React.CSSProperties}
+    >
       <div className={`container ${styles.inner}`}>
         <div className={styles.top}>
           <div className={styles.lockup}>

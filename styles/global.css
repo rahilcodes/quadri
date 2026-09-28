@@ -1,5 +1,5 @@
-@import '../styles/tokens.css';
-@import '../styles/fonts.css';
+@import './tokens.css';
+@import './fonts.css';
 
 *,
 *::before,
@@ -288,4 +288,12 @@ button {
 /* No page scroll behind an open dialog (menu or disclaimer). */
 html.dialog-open {
   overflow: hidden;
+}
+
+/* Sections below the first screen are laid out and painted only as they come near
+   the viewport. That keeps the first render, and the re-layout when the web fonts
+   arrive, to the hero and fact strip. "auto" remembers each real height once seen. */
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto var(--estimate);
 }

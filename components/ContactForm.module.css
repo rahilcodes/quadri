@@ -87,8 +87,11 @@
   padding-right: var(--space-6);
 }
 
-.error,
-.failure {
+.error[hidden] {
+  display: none;
+}
+
+.error {
   font-size: var(--text-fine);
   line-height: var(--leading-lead);
   color: var(--color-error-on-ivory);
@@ -124,8 +127,12 @@
   line-height: var(--leading-body);
 }
 
-.success {
+.status [data-state='success'] {
   color: var(--color-ink);
+}
+
+.status [data-state='error'] {
+  color: var(--color-error-on-ivory);
 }
 
 @media (min-width: 640px) {

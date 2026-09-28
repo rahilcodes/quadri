@@ -1,80 +1,39 @@
-'use client';
-
-import { useRef, useState } from 'react';
 import styles from './ContactForm.module.css';
-import { LIMITS, matterTypes, validateContact, type ContactErrors, type ContactFields } from '@/lib/contact';
+import { LIMITS, type ContactFields } from '@/lib/contact';
 import { site } from '@/lib/site';
 
-type Status = 'idle' | 'sending' | 'success' | 'error' | 'rate-limited';
-
+/**
+ * Markup only. src/scripts/site.ts validates with the same rules as the server
+ * (lib/contact.ts), posts to /api/contact and fills the error and status slots.
+ * All messages come from content/site.json, carried on data attributes.
+ */
 export default function ContactForm() {
   const copy = site.contact.form;
-  const form = useRef<HTMLFormElement>(null);
-  const [errors, setErrors] = useState<ContactErrors>({});
-  const [status, setStatus] = useState<Status>('idle');
-  const [matter, setMatter] = useState('');
+  const matterTypes = site.practice.areas.map((area) => area.title);
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const fields: ContactFields = {
-      name: String(data.get('name') ?? ''),
-      phone: String(data.get('phone') ?? ''),
-      matter: String(data.get('matter') ?? ''),
-      message: String(data.get('message') ?? ''),
-    };
-
-    const found = validateContact(fields);
-    setErrors(found);
-    const first = Object.keys(found)[0];
-    if (first) {
-      setStatus('idle');
-      form.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
-      return;
-    }
-
-    setStatus('sending');
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // "company" is the honeypot: people never see it, scripts fill it in
-        body: JSON.stringify({ ...fields, company: String(data.get('company') ?? '') }),
-      });
-      if (response.ok) {
-        setStatus('success');
-        setMatter('');
-        form.current?.reset();
-        return;
-      }
-      if (response.status === 422) {
-        const body = (await response.json()) as { errors?: ContactErrors };
-        setErrors(body.errors ?? {});
-        setStatus('idle');
-        return;
-      }
-      setStatus(response.status === 429 ? 'rate-limited' : 'error');
-    } catch {
-      setStatus('error');
-    }
-  }
-
-  const clear = (field: keyof ContactFields) => () => {
-    if (errors[field]) setErrors(({ [field]: _removed, ...rest }) => rest);
-  };
-
-  const describe = (field: keyof ContactFields) =>
-    errors[field] ? { 'aria-invalid': true, 'aria-describedby': `contact-${field}-error` } : {};
-
-  const error = (field: keyof ContactFields) =>
-    errors[field] ? (
-      <p className={styles.error} id={`contact-${field}-error`}>
-        {errors[field]}
-      </p>
-    ) : null;
+  const slot = (field: keyof ContactFields) => (
+    <p className={styles.error} id={`contact-${field}-error`} data-error-for={field} hidden />
+  );
 
   return (
-    <form ref={form} className={styles.form} onSubmit={onSubmit} noValidate data-reveal="" aria-labelledby="contact-title">
+    <form
+      className={styles.form}
+      action="/api/contact"
+      method="post"
+      noValidate
+      data-reveal=""
+      data-contact-form=""
+      data-label-submit={copy.submit}
+      data-label-sending={copy.sending}
+      data-message-success={copy.success}
+      data-message-error={copy.error}
+      data-message-rate-limited={copy.rateLimited}
+      data-error-name={copy.errors.name}
+      data-error-phone={copy.errors.phone}
+      data-error-matter={copy.errors.matter}
+      data-error-message={copy.errors.message}
+      aria-labelledby="contact-title"
+    >
       <div className={styles.field}>
         <label className="sr-only" htmlFor="contact-name">
           {copy.name}
@@ -87,10 +46,8 @@ export default function ContactForm() {
           placeholder={copy.name}
           maxLength={LIMITS.name}
           required
-          onInput={clear('name')}
-          {...describe('name')}
         />
-        {error('name')}
+        {slot('name')}
       </div>
 
       <div className={styles.field}>
@@ -106,28 +63,15 @@ export default function ContactForm() {
           placeholder={copy.phone}
           maxLength={LIMITS.phone}
           required
-          onInput={clear('phone')}
-          {...describe('phone')}
         />
-        {error('phone')}
+        {slot('phone')}
       </div>
 
       <div className={`${styles.field} ${styles.select}`}>
         <label className="sr-only" htmlFor="contact-matter">
           {copy.matter}
         </label>
-        <select
-          id="contact-matter"
-          name="matter"
-          value={matter}
-          required
-          data-empty={matter === '' ? '' : undefined}
-          onChange={(event) => {
-            setMatter(event.target.value);
-            clear('matter')();
-          }}
-          {...describe('matter')}
-        >
+        <select id="contact-matter" name="matter" defaultValue="" required data-empty="">
           <option value="" disabled>
             {copy.matter}
           </option>
@@ -137,7 +81,7 @@ export default function ContactForm() {
             </option>
           ))}
         </select>
-        {error('matter')}
+        {slot('matter')}
       </div>
 
       <div className={styles.field}>
@@ -151,27 +95,21 @@ export default function ContactForm() {
           placeholder={copy.message}
           maxLength={LIMITS.message}
           required
-          onInput={clear('message')}
-          {...describe('message')}
         />
-        {error('message')}
+        {slot('message')}
       </div>
 
-      {/* Honeypot: hidden from people and assistive technology, left in the tab order of scripts only. */}
+      {/* Honeypot: hidden from people and assistive technology; only scripts fill it in. */}
       <div className={styles.trap} aria-hidden="true">
         <label htmlFor="contact-company">Company</label>
         <input id="contact-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <button className={`button ${styles.submit}`} type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? copy.sending : copy.submit}
+      <button className={`button ${styles.submit}`} type="submit">
+        {copy.submit}
       </button>
 
-      <div className={styles.status} role="status" aria-live="polite">
-        {status === 'success' && <p className={styles.success}>{copy.success}</p>}
-        {status === 'error' && <p className={styles.failure}>{copy.error}</p>}
-        {status === 'rate-limited' && <p className={styles.failure}>{copy.rateLimited}</p>}
-      </div>
+      <div className={styles.status} role="status" aria-live="polite" data-form-status="" />
     </form>
   );
 }

@@ -37,7 +37,6 @@
   --font-nastaliq: 'Noto Nastaliq Urdu', serif;
   --weight-regular: 400;
   --weight-medium: 500;
-  --weight-semibold: 600;
 
   /* ---------- Fluid scale ----------
      --t runs from 0px at a 390 px viewport to 1px at 1440 px and is clamped
@@ -201,10 +200,20 @@
   /* ---------- Motion (export) ---------- */
   --duration: 600ms;
   --duration-fast: 300ms;
-  --duration-draw: 1200ms; /* assumed: hairlines and the arch drawing themselves */
+  --duration-draw: 900ms; /* assumed: hairlines and the arch drawing themselves */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* assumed: decelerating, no overshoot */
   --rise: 1.5rem; /* assumed: 24 px travel for fade-and-rise */
   --stagger: 90ms; /* assumed */
+
+  /* ---------- Section height estimates (measured at 390 -> 1440) ----------
+     Sections below the first screen use content-visibility, so the browser lays
+     them out only as they come near. These stand in for their heights until then. */
+  --estimate-practice: calc(83rem - 156 * var(--t)); /* 1334 -> 1178 */
+  --estimate-about: calc(41rem + 204 * var(--t)); /* 656 -> 860 */
+  --estimate-process: calc(30rem + 69 * var(--t)); /* 480 -> 549 */
+  --estimate-notary: calc(27rem + 224 * var(--t)); /* 432 -> 656 */
+  --estimate-contact: calc(68rem - 149 * var(--t)); /* 1088 -> 939 */
+  --estimate-footer: calc(28rem - 7 * var(--t)); /* 448 -> 441 */
 
   /* ---------- Layers ---------- */
   --z-sticky: 20;

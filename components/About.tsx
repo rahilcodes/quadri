@@ -1,13 +1,14 @@
-import Image from 'next/image';
 import Arch from './Arch';
+import Picture, { type PictureSource } from './Picture';
 import styles from './About.module.css';
 import { site } from '@/lib/site';
 
-export default function About() {
-  const { about, hero } = site;
+export default function About({ portrait }: { portrait: PictureSource }) {
+  const { about } = site;
 
   return (
-    <section id="about" className={`${styles.section} on-ink`} aria-labelledby="about-title">
+    <section id="about" className="below-fold on-ink"
+      style={{ '--estimate': 'var(--estimate-about)' } as React.CSSProperties} aria-labelledby="about-title">
       <div className={`container ${styles.inner}`}>
         <div className={styles.lead} data-reveal="">
           <h2 id="about-title" className="label">
@@ -21,7 +22,7 @@ export default function About() {
           <div className={styles.bio} data-reveal="">
             <div className={styles.portrait}>
               <Arch variant="mask" id="arch-small" shape="small" />
-              <Image src={hero.portrait.src} alt={about.portraitAlt} fill sizes="160px" loading="lazy" />
+              <Picture image={portrait} alt={about.portraitAlt} sizes="160px" />
             </div>
             {/* The 390 frame carries a condensed biography; the full text takes over from 640. */}
             <p className={styles.summary}>{about.summary}</p>

@@ -2,8 +2,8 @@
 // 1. Copies the self-hosted font files into /public/fonts.
 // 2. Subsets Noto Nastaliq Urdu to the single footer word (160 KB -> a few KB).
 // 3. Writes the PLACEHOLDER portrait used until the client's photo shoot.
-//    Replace public/images/portrait.jpg with the real photograph (same name,
-//    portrait orientation, at least 960 x 1240) and nothing else needs to change.
+//    Replace images/portrait.jpg with the real photograph (same name, portrait
+//    orientation, at least 960 x 1240). The build makes every size and format from it.
 import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
@@ -14,7 +14,7 @@ import subsetFont from 'subset-font';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = JSON.parse(await readFile(path.join(root, 'content/site.json'), 'utf8'));
 const fontsOut = path.join(root, 'public/fonts');
-const imagesOut = path.join(root, 'public/images');
+const imagesOut = path.join(root, 'images');
 await mkdir(fontsOut, { recursive: true });
 await mkdir(imagesOut, { recursive: true });
 
@@ -23,11 +23,10 @@ const fontsource = (pkg, file) => path.join(root, 'node_modules/@fontsource', pk
 const copies = [
   ['instrument-serif', 'instrument-serif-latin-400-normal.woff2'],
   ['instrument-serif', 'instrument-serif-latin-400-italic.woff2'],
-  // .woff copy is only read at build time by app/opengraph-image.tsx (satori cannot read woff2)
+  // .woff copy is only read at build time by src/pages/og.png.ts (satori cannot read woff2)
   ['instrument-serif', 'instrument-serif-latin-400-normal.woff'],
   ['schibsted-grotesk', 'schibsted-grotesk-latin-400-normal.woff2'],
   ['schibsted-grotesk', 'schibsted-grotesk-latin-500-normal.woff2'],
-  ['schibsted-grotesk', 'schibsted-grotesk-latin-600-normal.woff2'],
 ];
 for (const [pkg, file] of copies) {
   await copyFile(fontsource(pkg, file), path.join(fontsOut, file));

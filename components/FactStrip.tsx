@@ -1,4 +1,3 @@
-import CountUp from './CountUp';
 import styles from './FactStrip.module.css';
 import { site } from '@/lib/site';
 
@@ -12,7 +11,17 @@ export default function FactStrip() {
             {/* dt/dd are reversed visually: the numeral leads, its caption follows */}
             <dt className={`label ${styles.caption}`}>{fact.label}</dt>
             <dd className={`${styles.numeral} ${fact.countTo === null ? styles.word : ''}`}>
-              {fact.countTo === null ? fact.value : <CountUp to={fact.countTo} value={fact.value} />}
+              {fact.countTo === null ? (
+                fact.value
+              ) : (
+                <>
+                  {/* src/scripts/site.ts counts this up once; screen readers get the final value */}
+                  <span aria-hidden="true" data-count-to={fact.countTo}>
+                    {fact.value}
+                  </span>
+                  <span className="sr-only">{fact.value}</span>
+                </>
+              )}
             </dd>
           </div>
         ))}

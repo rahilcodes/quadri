@@ -2,7 +2,7 @@
   "_readme": "All copy, phones, address and hours live in this file. Edit, save, redeploy. Keys starting with _ are notes and are never shown on the site. Rule 36: do not add testimonials, ratings, case results, superlatives (best/top/leading) or 'free consultation' wording.",
 
   "url": "https://quadriadvocates.in",
-  "_url": "PLACEHOLDER domain. Set the real one here, or set NEXT_PUBLIC_SITE_URL in the host's environment.",
+  "_url": "PLACEHOLDER domain. Set the real one here, or set PUBLIC_SITE_URL in the host's environment.",
 
   "name": "Quadri Advocates & Associates",
   "shortName": "Quadri Advocates",
@@ -33,9 +33,6 @@
     "primary": { "label": "Book a consultation", "href": "#contact" },
     "secondary": { "label": "Our practice", "href": "#practice" },
     "portrait": {
-      "src": "/images/portrait.jpg",
-      "width": 960,
-      "height": 1240,
       "alt": "Mohd. Moin Ahmed Quadri in his chambers at Narayanguda"
     }
   },

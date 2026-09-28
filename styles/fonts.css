@@ -33,14 +33,6 @@
   src: url('/fonts/schibsted-grotesk-latin-500-normal.woff2') format('woff2');
 }
 
-@font-face {
-  font-family: 'Schibsted Grotesk';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/schibsted-grotesk-latin-600-normal.woff2') format('woff2');
-}
-
 /* Subset to the one footer word; only requested when the footer renders it. */
 @font-face {
   font-family: 'Noto Nastaliq Urdu';

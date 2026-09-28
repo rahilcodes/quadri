@@ -5,7 +5,7 @@ import { site, siteUrl } from '@/lib/site';
  * aggregateRating, review and award properties, so none are emitted.
  */
 export default function JsonLd() {
-  const { contact, about, hero } = site;
+  const { contact, about } = site;
   const languages = about.facts.find((fact) => fact.term === 'Languages')?.detail.split(' · ');
 
   const data = {
@@ -16,7 +16,7 @@ export default function JsonLd() {
     alternateName: site.shortName,
     description: site.meta.description,
     url: `${siteUrl}/`,
-    image: `${siteUrl}${hero.portrait.src}`,
+    image: `${siteUrl}/og.png`,
     telephone: contact.phones[0].tel,
     contactPoint: contact.phones.map((phone) => ({
       '@type': 'ContactPoint',

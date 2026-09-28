@@ -6,7 +6,8 @@ export default function Practice() {
   const { practice } = site;
 
   return (
-    <section id="practice" className={`${styles.section} on-ivory`} aria-labelledby="practice-title">
+    <section id="practice" className="below-fold on-ivory"
+      style={{ '--estimate': 'var(--estimate-practice)' } as React.CSSProperties} aria-labelledby="practice-title">
       <div className={`container ${styles.inner}`}>
         <header className={styles.header} data-reveal="">
           <p className="label">{practice.label}</p>

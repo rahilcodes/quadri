@@ -15,7 +15,7 @@
     color var(--duration-fast) var(--ease);
 }
 
-.scrolled {
+.header[data-scrolled] {
   --ground: var(--color-ivory);
   --figure: var(--color-ink);
   --button-hover: var(--color-rule-on-ink);
@@ -33,7 +33,7 @@
   transition: padding var(--duration-fast) var(--ease);
 }
 
-.scrolled .bar {
+.header[data-scrolled] .bar {
   padding-block: var(--nav-pad-y-scrolled);
 }
 
@@ -48,7 +48,7 @@
   white-space: nowrap;
 }
 
-.header:not(.scrolled) .brand {
+.header:not([data-scrolled]) .brand {
   letter-spacing: var(--tracking-brand);
 }
 
@@ -224,7 +224,7 @@
     color: var(--color-silver);
   }
 
-  .scrolled .links {
+  .header[data-scrolled] .links {
     color: var(--color-text-on-ivory);
   }
 

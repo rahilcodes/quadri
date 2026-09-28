@@ -6,7 +6,8 @@ export default function Notary() {
   const { notary, contact } = site;
 
   return (
-    <section id="notary" className={`${styles.section} on-accent`} aria-labelledby="notary-title">
+    <section id="notary" className="below-fold on-accent"
+      style={{ '--estimate': 'var(--estimate-notary)' } as React.CSSProperties} aria-labelledby="notary-title">
       <div className={`container ${styles.inner}`}>
         <header className={styles.header} data-reveal="">
           <p className="label">{notary.label}</p>
