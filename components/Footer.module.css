@@ -1,0 +1,107 @@
+.footer {
+  color: var(--color-muted-on-ink);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-footer);
+  padding-top: var(--footer-top);
+  /* export, 390: 80 clears the sticky bar */
+  padding-bottom: calc(var(--space-20) + env(safe-area-inset-bottom, 0px));
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.lockup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3-5);
+  min-width: 0;
+  color: var(--color-ivory);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--brand-gap);
+  font-family: var(--font-serif);
+  font-size: var(--text-brand);
+  line-height: var(--leading-brand);
+}
+
+.mark {
+  flex: none;
+  width: var(--mark-width);
+}
+
+/* The 390 frame shows the name and glyph only. */
+.est,
+.links,
+.enrolled {
+  display: none;
+}
+
+.glyph {
+  flex: none;
+  font-family: var(--font-nastaliq);
+  font-size: var(--text-glyph);
+  line-height: var(--leading-nastaliq);
+  color: var(--color-silver);
+}
+
+.disclaimer {
+  max-width: var(--measure-fine);
+  font-size: var(--text-fine);
+  line-height: var(--leading-relaxed);
+  text-wrap: pretty;
+}
+
+.base {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-top: var(--footer-base);
+  border-top: var(--hairline) solid var(--color-rule-on-ink);
+  font-size: var(--text-fine);
+  line-height: var(--leading-lead);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-bottom: var(--space-12);
+  }
+
+  .top {
+    align-items: flex-start;
+  }
+
+  .est,
+  .enrolled {
+    display: block;
+  }
+
+  .links {
+    display: block;
+    font-size: var(--text-nav);
+    color: var(--color-silver);
+  }
+
+  .links ul {
+    display: flex;
+    gap: var(--nav-gap);
+  }
+
+  .links a {
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .links a:hover {
+    color: var(--color-ivory);
+  }
+}

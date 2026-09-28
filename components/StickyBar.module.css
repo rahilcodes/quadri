@@ -1,0 +1,39 @@
+.bar {
+  --ground: var(--color-ivory);
+  --figure: var(--color-ink);
+  position: fixed;
+  inset: auto 0 0;
+  z-index: var(--z-sticky);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* iOS home indicator: the bar grows by the inset, the targets stay 60 high */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+  background: var(--color-ivory);
+  border-top: var(--hairline) solid var(--color-silver);
+  color: var(--color-ink);
+  font-size: var(--text-nav);
+  font-weight: var(--weight-medium);
+}
+
+.bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--sticky-bar);
+}
+
+.bar a + a {
+  border-left: var(--hairline) solid var(--color-silver);
+}
+
+/* inset ring: an outer ring would be clipped by the screen edge */
+.bar a:focus-visible {
+  box-shadow: inset 0 0 0 var(--focus-gap) var(--color-ink);
+}
+
+@media (min-width: 768px) {
+  .bar {
+    display: none;
+  }
+}

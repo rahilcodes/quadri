@@ -1,0 +1,134 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--field-gap);
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: var(--tap);
+  padding: var(--space-3) 0;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--color-silver);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: var(--text-field);
+  line-height: var(--leading-lead);
+  appearance: none;
+  transition: border-color var(--duration-fast) var(--ease);
+}
+
+.field textarea {
+  display: block;
+  resize: none;
+}
+
+.field ::placeholder {
+  color: var(--color-muted-on-ivory);
+  opacity: 1;
+}
+
+.field select[data-empty] {
+  color: var(--color-muted-on-ivory);
+}
+
+.field option {
+  color: var(--color-ink);
+  background: var(--color-ivory);
+}
+
+.field :hover {
+  border-bottom-color: var(--color-muted-on-ivory);
+}
+
+/* Fields keep the export's single rule; focus darkens and doubles it rather than boxing the field. */
+.field :focus-visible {
+  border-bottom-color: var(--color-ink);
+  box-shadow: 0 var(--hairline) 0 0 var(--color-ink);
+}
+
+.field [aria-invalid='true'] {
+  border-bottom-color: var(--color-error-on-ivory);
+}
+
+.field [aria-invalid='true']:focus-visible {
+  box-shadow: 0 var(--hairline) 0 0 var(--color-error-on-ivory);
+}
+
+/* A small chevron for the select, drawn with borders so it needs no image. */
+.select {
+  position: relative;
+}
+
+.select::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--tap) / 2);
+  right: var(--space-1);
+  width: var(--space-2);
+  height: var(--space-2);
+  border-right: var(--hairline) solid var(--color-muted-on-ivory);
+  border-bottom: var(--hairline) solid var(--color-muted-on-ivory);
+  transform: translateY(-75%) rotate(45deg);
+  pointer-events: none;
+}
+
+.select select {
+  padding-right: var(--space-6);
+}
+
+.error,
+.failure {
+  font-size: var(--text-fine);
+  line-height: var(--leading-lead);
+  color: var(--color-error-on-ivory);
+}
+
+.trap {
+  position: absolute;
+  left: -200vw;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Base (export, 390): full-width pill, 48 high. */
+.submit {
+  min-height: var(--tap-lg);
+  margin-top: var(--space-2);
+}
+
+.submit:disabled {
+  background: var(--color-rule-on-ink);
+  cursor: progress;
+}
+
+.status:empty {
+  display: none;
+}
+
+.status p {
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--color-silver);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
+
+.success {
+  color: var(--color-ink);
+}
+
+@media (min-width: 640px) {
+  .submit {
+    align-self: flex-start;
+  }
+}

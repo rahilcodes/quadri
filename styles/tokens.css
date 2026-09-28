@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Design tokens: Deccan Modern.
+   Every colour, type size and spacing value on the site is defined here and
+   nowhere else. Values marked "export" are copied from the Claude Design file
+   (design/Quadri Advocates Homepage.dc.html); values marked "assumed" are not
+   in the export and are explained inline.
+
+   Breakpoints (custom properties cannot be used inside @media, so these are
+   written as literals in the component CSS; keep them in sync with this list):
+     390 base · 640 · 768 · 1024 · 1280 · 1440 · 1920
+   ========================================================================== */
+
+:root {
+  /* ---------- Colour (export) ---------- */
+  --color-ink: #0e0f12;
+  --color-ivory: #f4efe6;
+  --color-silver: #c9c4b8; /* hairlines on ivory, text on ink. Never text on ivory (1.6:1). */
+  --color-terracotta: #b5502a; /* the brand accent: borders, hover, focus */
+  /* Ground for the notary block. Ivory on #B5502A is 4.42:1, which fails WCAG AA
+     for body text; this is the nearest shade that passes (4.62:1). */
+  --color-terracotta-ground: #b04e29;
+
+  --color-text-on-ivory: #3a3833; /* body copy on ivory, 10.2:1 */
+  --color-muted-on-ivory: #6b665c; /* labels and metadata on ivory, 5.0:1 */
+  --color-muted-on-ink: #8a857b; /* terms and fine print on ink, 5.2:1 */
+  --color-rule-on-ink: #3a3b40; /* hairlines on ink; also the ink button hover */
+  --color-rule-on-accent: rgb(244 239 230 / 0.4);
+  --color-placeholder-ground: #1a1b1f; /* behind the portrait while it loads */
+  --color-map-ground: #e9e4da;
+  --color-map-line: #d8d3c9;
+  --color-scrim: rgb(14 15 18 / 0.72); /* assumed: backdrop behind the disclaimer modal */
+  --color-error-on-ivory: #9a3f1d; /* assumed: terracotta darkened to 6.2:1 for small error text */
+
+  /* ---------- Fonts ---------- */
+  --font-serif: 'Instrument Serif', 'Instrument Serif Fallback', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Schibsted Grotesk', 'Schibsted Grotesk Fallback', Helvetica, Arial, sans-serif;
+  --font-nastaliq: 'Noto Nastaliq Urdu', serif;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* ---------- Fluid scale ----------
+     --t runs from 0px at a 390 px viewport to 1px at 1440 px and is clamped
+     outside that range. Every fluid token is  mobile + (desktop - mobile) * t,
+     so each value lands exactly on the design at both 390 and 1440. */
+  --t: clamp(0px, (100vw - 390px) / 1050, 1px);
+
+  /* ---------- Type: size (export, 390 -> 1440) ---------- */
+  --text-h1: calc(3rem + 72 * var(--t)); /* 48 -> 120 */
+  --text-h2: calc(2.25rem + 20 * var(--t)); /* 36 -> 56 */
+  --text-display: calc(2.75rem + 28 * var(--t)); /* notary heading 44 -> 72 */
+  --text-quote: calc(2.25rem + 28 * var(--t)); /* 36 -> 64 */
+  --text-numeral: calc(3.5rem + 40 * var(--t)); /* 56 -> 96 */
+  --text-card-title: calc(1.625rem + 8 * var(--t)); /* 26 -> 34 */
+  --text-step-title: calc(1.75rem + 12 * var(--t)); /* 28 -> 40 */
+  --text-ordinal: calc(0.9375rem + 3 * var(--t)); /* 15 -> 18 */
+  --text-brand: calc(1.125rem + 4 * var(--t)); /* 18 -> 22 */
+  --text-menu: 2.5rem; /* assumed: overlay menu links; the export has no open-menu frame */
+  --text-glyph: calc(1.25rem + 8 * var(--t)); /* Nastaliq mark 20 -> 28 */
+
+  --text-lead: calc(1rem + 4 * var(--t)); /* hero sub 16 -> 20 */
+  --text-lead-accent: calc(0.9375rem + 5 * var(--t)); /* notary lead 15 -> 20 */
+  --text-body-lg: calc(0.9375rem + 2 * var(--t)); /* about, notary list 15 -> 17 */
+  --text-body: calc(0.875rem + 2 * var(--t)); /* cards, steps 14 -> 16 */
+  --text-body-contact: calc(0.9375rem + 1 * var(--t)); /* contact details, links 15 -> 16 */
+  --text-small: calc(0.875rem + 1 * var(--t)); /* facts list, hours 14 -> 15 */
+  --text-nav: 0.9375rem; /* 15 */
+  --text-modal: 0.8125rem; /* 13, disclaimer (style tile) */
+  --text-fine: calc(0.75rem + 1 * var(--t)); /* footer 12 -> 13 */
+  --text-label: calc(0.6875rem + 1 * var(--t)); /* 11 -> 12 */
+  --text-button: calc(0.9375rem + 1 * var(--t)); /* 15 -> 16 */
+  --text-field: 1rem; /* export is 15 on mobile; held at 16 so iOS does not zoom on focus */
+  --text-arrow: 1.25rem; /* 20 */
+
+  /* ---------- Type: leading and tracking (export) ---------- */
+  --leading-h1: 0.95; /* .92 from 1024, below */
+  --leading-tight: 1;
+  --leading-brand: 1.2; /* assumed: the export leaves the name at the browser default */
+  --leading-heading: 1.05;
+  --leading-quote: 1.1; /* 1.05 from 1024, below */
+  --leading-title: 1.1;
+  --leading-nastaliq: 1.4;
+  --leading-lead: 1.5;
+  --leading-body: 1.55;
+  --leading-relaxed: 1.6;
+  --tracking-h1: -0.02em;
+  --tracking-heading: -0.01em;
+  --tracking-brand: 0.01em;
+  --tracking-label: 0.14em;
+
+  /* ---------- Spacing scale (export; 4 px base) ---------- */
+  --space-1: 0.25rem; /* 4 */
+  --space-1-5: 0.375rem; /* 6 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-3-5: 0.875rem; /* 14 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-7: 1.75rem; /* 28 */
+  --space-8: 2rem; /* 32 */
+  --space-9: 2.25rem; /* 36 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-18: 4.5rem; /* 72 */
+  --space-20: 5rem; /* 80 */
+  --space-24: 6rem; /* 96 */
+  --space-30: 7.5rem; /* 120 */
+  --space-35: 8.75rem; /* 140 */
+
+  /* ---------- Layout: fluid (export, 390 -> 1440) ---------- */
+  --margin: calc(1.5rem + 72 * var(--t)); /* page margin 24 -> 96 */
+  --section-y: calc(4rem + 56 * var(--t)); /* 64 -> 120 */
+  --section-y-lg: calc(4rem + 76 * var(--t)); /* about 64 -> 140 */
+  --strip-y: calc(2.5rem + 40 * var(--t)); /* fact strip 40 -> 80 */
+  --strip-cell: calc(1.5rem + 16 * var(--t)); /* fact cell inset 24 -> 40 */
+  --strip-gap: calc(0.5rem + 6 * var(--t)); /* numeral to label 8 -> 14 */
+  --footer-top: calc(3rem + 32 * var(--t)); /* 48 -> 80 */
+  --stack-section: calc(2rem + 32 * var(--t)); /* label/heading to content 32 -> 64 */
+  --stack-process: calc(2rem + 40 * var(--t)); /* 32 -> 72 */
+  --stack-block: calc(2rem + 8 * var(--t)); /* 32 -> 40 */
+  --stack-hero: calc(1.5rem + 16 * var(--t)); /* 24 -> 40 */
+  --stack-footer: calc(1.75rem + 36 * var(--t)); /* 28 -> 64 */
+  --gap-grid: calc(0.75rem + 12 * var(--t)); /* practice cards 12 -> 24 */
+  --gap-cols: calc(1.5rem + 24 * var(--t)); /* column gap 24 -> 48 */
+  --gap-cols-wide: calc(2rem + 64 * var(--t)); /* about / contact split 32 -> 96 */
+  --card-pad: calc(1.5rem + 8 * var(--t)); /* 24 -> 32 */
+  --card-gap: calc(0.75rem + 16 * var(--t)); /* 12 -> 28 */
+  --card-min-height: 18.75rem; /* 300, grid layouts only */
+  --facts-term: calc(5.625rem + 50 * var(--t)); /* facts list term column 90 -> 140 */
+  --facts-row: calc(0.75rem + 4 * var(--t)); /* 12 -> 16 */
+  --field-gap: calc(1.25rem + 8 * var(--t)); /* 20 -> 28 */
+  --gap-cols-facts: calc(1rem + 8 * var(--t)); /* facts list 16 -> 24 */
+  --gap-contact: calc(2rem + 32 * var(--t)); /* details to form 32 -> 64 */
+  --step-pad: calc(1rem + 8 * var(--t)); /* rule to step 16 -> 24 */
+  --stack-notary: calc(1.5rem + 8 * var(--t)); /* 24 -> 32 */
+  --stack-notary-body: calc(1.5rem + 24 * var(--t)); /* 24 -> 48 */
+  --stack-contact: calc(1.75rem + 4 * var(--t)); /* 28 -> 32 */
+  --footer-base: calc(1rem + 8 * var(--t)); /* 16 -> 24 */
+
+  /* ---------- Layout: fixed (export) ---------- */
+  --container: 90rem; /* 1440: content stops growing here; grounds stay full-bleed */
+  --hero-min-height: 40rem; /* assumed floor for short landscape viewports */
+  --hero-top-compact: 4.4375rem; /* 71: 20 pad + 27 nav row + 24 gap, stacked hero */
+  --hero-bottom-compact: 5.75rem; /* 92: clears the sticky bar */
+  --contact-offset: 4.75rem; /* 76: aligns details with the map top */
+  --modal-width: 35rem; /* assumed: 560 */
+  --burger-height: 1.5rem; /* assumed: visual height of the menu button */
+  --hero-offset: 3.75rem; /* 60: optical offset below the nav */
+  --measure-h1: 40rem; /* 640 */
+  --measure-sub: 32.5rem; /* 520 */
+  --measure-lead: 35rem; /* 560 */
+  --measure-fine: 60rem; /* 960 */
+  --portrait-width: 30rem; /* 480 */
+  --portrait-ratio: 480 / 620;
+  --portrait-ratio-compact: 342 / 300;
+  --portrait-width-compact: 26.25rem; /* assumed: 420 cap between 640 and 1023 */
+  --portrait-small-width: 10rem; /* 160 */
+  --portrait-small-ratio: 160 / 210;
+  --map-height: calc(11.25rem + 340 * var(--t)); /* 180 -> 520 */
+  --scroll-cue: 4.5rem; /* 72 */
+  --nav-pad-y: calc(1.25rem + 16 * var(--t)); /* over hero 20 -> 36 */
+  --nav-pad-y-scrolled: calc(0.875rem + 6 * var(--t)); /* after scroll 14 -> 20 (14 assumed) */
+  --nav-gap: 2.5rem; /* 40 */
+  --brand-gap: calc(0.625rem + 4 * var(--t)); /* 10 -> 14 */
+  --burger-width: 1.375rem; /* 22 */
+  --burger-gap: 0.375rem; /* 6 */
+  --sticky-bar: 3.75rem; /* 60 */
+  --tap: 2.75rem; /* 44 minimum touch target */
+  --tap-lg: 3rem; /* 48 */
+
+  --button-pad: calc(0.875rem + 2 * var(--t)) calc(1.5rem + 4 * var(--t)); /* 14 24 -> 16 28 */
+  --button-pad-sm: 0.75rem 1.375rem; /* 12 22 */
+  --button-pad-xs: 0.625rem 1.125rem; /* 10 18, disclaimer */
+  --link-offset: calc(0.1875rem + 1 * var(--t)); /* underline offset 3 -> 4 */
+
+  --hairline: 1px;
+  --radius-pill: 999px;
+  --focus-gap: 2px;
+  --focus-ring: 3px; /* export focus state: 2 px ground gap, then 1 px ring */
+
+  /* ---------- Arch mark ---------- */
+  --mark-width: calc(1.25rem + 6 * var(--t)); /* 20 -> 26 */
+  --mark-stroke: calc(2px - 0.5 * var(--t)); /* 2 -> 1.5 */
+  --arch-hover-width: 7.5rem; /* assumed: the arch that rises behind a card */
+  --arch-hover-opacity: 0.35;
+
+  /* ---------- Motion (export) ---------- */
+  --duration: 600ms;
+  --duration-fast: 300ms;
+  --duration-draw: 1200ms; /* assumed: hairlines and the arch drawing themselves */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1); /* assumed: decelerating, no overshoot */
+  --rise: 1.5rem; /* assumed: 24 px travel for fade-and-rise */
+  --stagger: 90ms; /* assumed */
+
+  /* ---------- Layers ---------- */
+  --z-sticky: 20;
+  --z-nav: 30;
+  --z-skip: 60;
+
+  /* Grain for photographs: an inline SVG turbulence filter, about 300 bytes, no image request. */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-opacity: 0.12;
+}
+
+/* Above 1440 the type and spacing hold at their design values; only the grounds keep growing. */
+
+@media (min-width: 1024px) {
+  :root {
+    --leading-h1: 0.92;
+    --leading-quote: 1.05;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 1ms;
+    --duration-fast: 1ms;
+    --duration-draw: 1ms;
+    --rise: 0rem;
+    --stagger: 0ms;
+  }
+}

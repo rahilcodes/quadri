@@ -1,0 +1,50 @@
+import Arch from './Arch';
+import styles from './Footer.module.css';
+import { site } from '@/lib/site';
+
+export default function Footer() {
+  const { footer, nav, disclaimer } = site;
+
+  return (
+    <footer className={`${styles.footer} on-ink`}>
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.top}>
+          <div className={styles.lockup}>
+            <p className={styles.brand}>
+              <Arch className={styles.mark} size="var(--mark-width)" stroke="var(--mark-stroke)" />
+              <span>{site.name}</span>
+            </p>
+            <p className={`label ${styles.est}`}>{site.lockup}</p>
+          </div>
+
+          <nav className={styles.links} aria-label="Footer">
+            <ul>
+              {nav.links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Decorative mark. role="img" gives it one spoken name instead of five letters. */}
+          <p className={styles.glyph} lang="ur" dir="rtl" role="img" aria-label={footer.glyphLabel}>
+            {footer.glyph}
+          </p>
+        </div>
+
+        {/* Bar Council of India, Rule 36: the entry disclaimer, repeated in full. */}
+        <p className={styles.disclaimer} id="disclaimer">
+          {disclaimer.text}
+        </p>
+
+        <div className={styles.base}>
+          <p>
+            © {new Date().getFullYear()} {footer.copyright}
+          </p>
+          <p className={styles.enrolled}>{footer.enrolled}</p>
+        </div>
+      </div>
+    </footer>
+  );
+}

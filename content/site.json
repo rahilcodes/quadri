@@ -1,0 +1,168 @@
+{
+  "_readme": "All copy, phones, address and hours live in this file. Edit, save, redeploy. Keys starting with _ are notes and are never shown on the site. Rule 36: do not add testimonials, ratings, case results, superlatives (best/top/leading) or 'free consultation' wording.",
+
+  "url": "https://quadriadvocates.in",
+  "_url": "PLACEHOLDER domain. Set the real one here, or set NEXT_PUBLIC_SITE_URL in the host's environment.",
+
+  "name": "Quadri Advocates & Associates",
+  "shortName": "Quadri Advocates",
+  "lockup": "Est. 1997 · Narayanguda, Hyderabad",
+  "founded": "1997",
+  "advocate": "Mohd. Moin Ahmed Quadri",
+  "email": null,
+  "_email": "No public email supplied yet. Add one here and it appears in the structured data.",
+
+  "meta": {
+    "title": "Quadri Advocates & Associates | Advocates & Notary, Narayanguda, Hyderabad",
+    "description": "A Hyderabad chambers established in 1997 for civil, criminal, family, consumer and commercial matters, and notarial services. Narayanguda, Hyderabad."
+  },
+
+  "nav": {
+    "links": [
+      { "label": "Practice", "href": "#practice" },
+      { "label": "About", "href": "#about" },
+      { "label": "Notary", "href": "#notary" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": { "label": "Book a consultation", "href": "#contact" }
+  },
+
+  "hero": {
+    "headline": "Counsel since 1997.",
+    "sub": "A Hyderabad chambers for civil, criminal, family and commercial matters, led by an advocate and notary with 29 years at the Bar.",
+    "primary": { "label": "Book a consultation", "href": "#contact" },
+    "secondary": { "label": "Our practice", "href": "#practice" },
+    "portrait": {
+      "src": "/images/portrait.jpg",
+      "width": 960,
+      "height": 1240,
+      "alt": "Mohd. Moin Ahmed Quadri in his chambers at Narayanguda"
+    }
+  },
+
+  "facts": [
+    { "value": "1997", "countTo": 1997, "label": "Established" },
+    { "value": "29", "countTo": 29, "label": "Years at the Bar" },
+    { "value": "6", "countTo": 6, "label": "Practice areas" },
+    { "value": "HC + CCC", "countTo": null, "label": "High Court + City Civil Court" }
+  ],
+
+  "practice": {
+    "label": "Practice",
+    "heading": "Six areas of work, one set of chambers.",
+    "areas": [
+      { "n": "01", "title": "Civil & Property", "desc": "Property disputes, landlord–tenant, partition, injunctions and property damage." },
+      { "n": "02", "title": "Criminal Defence", "desc": "Bail, trial defence, anti-corruption matters and cheque-bounce cases." },
+      { "n": "03", "title": "Family & Matrimonial", "desc": "Divorce, maintenance, domestic violence and custody." },
+      { "n": "04", "title": "Consumer & Insurance", "desc": "Consumer forum complaints, insurance claims and accident claims." },
+      { "n": "05", "title": "Corporate & Commercial", "desc": "Company law, small-business disputes, debt settlement and IP litigation." },
+      { "n": "06", "title": "Notary, Wills & Estates", "desc": "Notarisation, attestation, affidavits, powers of attorney, will drafting and probate." }
+    ]
+  },
+
+  "about": {
+    "label": "About the advocate",
+    "quote": "Every matter is someone's life. We treat it that way.",
+    "_quote": "To be approved by the client.",
+    "paragraphs": [
+      "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana, the Hyderabad City Civil Court and the consumer fora.",
+      "The chambers take civil, criminal, family, consumer and commercial matters, and provide notarial services. Every client meets Mr. Quadri himself.",
+      "Chambers sit in the evening, after court hours, so that clients can attend after their own working day."
+    ],
+    "_paragraphs": "Enrolment year is unconfirmed (the brief only verifies the firm was established in 1997). Confirm with the client.",
+    "portraitAlt": "Mohd. Moin Ahmed Quadri",
+    "facts": [
+      { "term": "Enrolled", "detail": "Bar Council of Telangana" },
+      { "term": "Courts", "detail": "High Court for the State of Telangana · Hyderabad City Civil Court · Consumer fora" },
+      { "term": "Languages", "detail": "English · Telugu · Hindi · Urdu" }
+    ],
+    "_facts": "Languages to be confirmed by the client. Add the enrolment number to the 'Enrolled' row when supplied."
+  },
+
+  "process": {
+    "label": "How we work",
+    "heading": "Three steps, in order.",
+    "steps": [
+      { "n": "1", "title": "Listen", "text": "A first meeting, in person or by phone." },
+      { "n": "2", "title": "Advise", "text": "A plain-language view of your position and options." },
+      { "n": "3", "title": "Act", "text": "Drafting, filing and appearances, with you informed at every step." }
+    ]
+  },
+
+  "notary": {
+    "label": "Notary",
+    "headingLines": ["Notary &", "attestation"],
+    "lead": "Notarisation, attestation, affidavits, agreements, powers of attorney and declarations. Walk in during chamber hours or call ahead.",
+    "services": ["Notarisation", "Affidavits", "Agreements", "Powers of attorney", "Declarations", "Attestation"],
+    "hoursLabel": "Walk-in hours",
+    "cta": "Call ahead"
+  },
+
+  "contact": {
+    "label": "Contact",
+    "heading": "Book a consultation.",
+    "addressLabel": "Chambers",
+    "addressLines": [
+      "Door No. 304, Ashish Orchids,",
+      "beside Shanthi Theatre, YMCA,",
+      "Narayanguda, Hyderabad 500029"
+    ],
+    "address": {
+      "street": "Door No. 304, Ashish Orchids, beside Shanthi Theatre, YMCA, Narayanguda",
+      "locality": "Hyderabad",
+      "region": "Telangana",
+      "postalCode": "500029",
+      "country": "IN"
+    },
+    "phoneLabel": "Telephone",
+    "phones": [
+      { "display": "+91 93910 39381", "tel": "+919391039381" },
+      { "display": "092461 08014", "tel": "+919246108014" }
+    ],
+    "whatsapp": { "label": "WhatsApp", "href": "https://wa.me/919391039381" },
+    "call": { "label": "Call", "tel": "+919391039381" },
+    "hoursLabel": "Hours",
+    "hours": [
+      { "display": "Mon–Thu 7:30–10:00 pm", "days": ["Monday", "Tuesday", "Wednesday", "Thursday"], "opens": "19:30", "closes": "22:00" },
+      { "display": "Sun 11:30 am–4:00 pm", "days": ["Sunday"], "opens": "11:30", "closes": "16:00" }
+    ],
+    "_hours": "Listings disagree (7 pm vs 7:30 pm). Confirm with the client.",
+    "map": {
+      "title": "Map of Narayanguda, Hyderabad, showing the chambers",
+      "embed": "https://www.google.com/maps?q=Ashish+Orchids,+Narayanguda,+Hyderabad+500029&z=16&output=embed",
+      "link": "https://www.google.com/maps/search/?api=1&query=Ashish+Orchids,+Narayanguda,+Hyderabad+500029",
+      "linkLabel": "Open in Google Maps"
+    },
+    "form": {
+      "name": "Name",
+      "phone": "Phone",
+      "matter": "Matter type",
+      "message": "Message",
+      "submit": "Send",
+      "sending": "Sending",
+      "success": "Thank you. Your message has reached the chambers. We will telephone you during chamber hours.",
+      "error": "Your message could not be sent. Please telephone the chambers instead.",
+      "rateLimited": "Too many messages from this connection. Please try again in a few minutes, or telephone the chambers.",
+      "errors": {
+        "name": "Please enter your name.",
+        "phone": "Please enter a telephone number we can reach you on.",
+        "matter": "Please choose a matter type.",
+        "message": "Please tell us briefly what the matter concerns."
+      }
+    }
+  },
+
+  "footer": {
+    "glyph": "قادری",
+    "glyphLabel": "Quadri, written in Urdu",
+    "enrolled": "Enrolled with the Bar Council of Telangana",
+    "copyright": "Quadri Advocates & Associates"
+  },
+
+  "disclaimer": {
+    "title": "Disclaimer",
+    "text": "The Bar Council of India does not permit advocates to solicit work or advertise. By accessing this website you acknowledge that you are seeking information about Quadri Advocates & Associates of your own accord, that there has been no solicitation, advertisement or inducement by the firm or its members, and that the information here is provided for general reference only and does not constitute legal advice or create an advocate–client relationship. The firm confirms the information on this website is true and accurate to the best of its knowledge.",
+    "accept": "I understand",
+    "_text": "Standard wording from the brief. To be approved by the client or a colleague at the Bar."
+  }
+}

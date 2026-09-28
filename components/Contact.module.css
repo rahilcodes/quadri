@@ -1,0 +1,177 @@
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+  padding-block: var(--section-y);
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-contact);
+  min-width: 0;
+}
+
+/* Map: the export's hatched ground shows until the map paints; greyscale to stay in palette. */
+.map {
+  position: relative;
+  height: var(--map-height);
+  border: var(--hairline) solid var(--color-silver);
+  background:
+    repeating-linear-gradient(135deg, var(--color-map-line) 0 1px, transparent 1px var(--space-3-5)),
+    var(--color-map-ground);
+  overflow: hidden;
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(1) contrast(0.92);
+}
+
+.mapLink {
+  position: absolute;
+  left: var(--space-3);
+  bottom: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-ivory);
+  border: var(--hairline) solid var(--color-silver);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.mapLink:hover {
+  border-color: var(--color-ink);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-7);
+  min-width: 0;
+}
+
+/* Base (export, 390): three plain lines, no group labels. */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+  font-size: var(--text-body-contact);
+  line-height: var(--leading-body);
+  color: var(--color-text-on-ivory);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.group h3 {
+  display: none;
+  margin: 0;
+  font-weight: var(--weight-regular);
+}
+
+.address {
+  font-style: normal;
+}
+
+.phones {
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--color-ink);
+}
+
+.phones li + li::before {
+  content: '·';
+  margin-inline: var(--space-2);
+}
+
+.phones a {
+  display: inline-block;
+  padding-block: var(--space-2);
+}
+
+.phones a:hover {
+  color: var(--color-text-on-ivory);
+}
+
+/* Below 768 the sticky bar already offers WhatsApp. */
+.whatsapp {
+  display: none;
+  align-self: flex-start;
+  font-size: inherit;
+  color: var(--color-ink);
+}
+
+.hours span + span::before {
+  content: ' · ';
+}
+
+/* 640 and up: labelled groups, details beside the form. */
+@media (min-width: 640px) {
+  .body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-contact);
+  }
+
+  .details {
+    gap: var(--space-8);
+    line-height: var(--leading-relaxed);
+  }
+
+  .group h3 {
+    display: block;
+  }
+
+  .phones {
+    flex-direction: column;
+  }
+
+  .phones li + li::before {
+    content: none;
+  }
+
+  .phones a {
+    padding-block: 0;
+  }
+
+  .hours span {
+    display: block;
+  }
+
+  .hours span + span::before {
+    content: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .whatsapp {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: var(--gap-cols-wide);
+  }
+
+  /* lines the details and form up with the top of the map (export: 76) */
+  .body {
+    padding-top: var(--contact-offset);
+  }
+}
+
+/* Address on the export's three lines once the column is wide enough to hold them. */
+@media (min-width: 1280px) {
+  .address span {
+    display: block;
+  }
+}

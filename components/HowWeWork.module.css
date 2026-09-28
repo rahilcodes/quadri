@@ -1,0 +1,97 @@
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-process);
+  padding-block: var(--section-y);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+/* The 390 frame shows the label only; the heading joins from 640. */
+.heading {
+  display: none;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--step-pad);
+  color: var(--color-ink);
+}
+
+/* Base (export, 390): ordinal in a 32 px column, title and sentence beside it. */
+.content {
+  display: grid;
+  grid-template-columns: var(--space-8) minmax(0, 1fr);
+  grid-template-areas:
+    'ordinal title'
+    'ordinal text';
+  gap: var(--space-1-5) var(--space-3);
+}
+
+.ordinal {
+  grid-area: ordinal;
+  font-family: var(--font-serif);
+  font-size: var(--text-ordinal);
+  line-height: var(--leading-lead);
+  color: var(--color-muted-on-ivory);
+}
+
+.title {
+  grid-area: title;
+  font-family: var(--font-serif);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-step-title);
+  line-height: var(--leading-tight);
+}
+
+.text {
+  grid-area: text;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-text-on-ivory);
+  text-wrap: pretty;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    display: block;
+  }
+}
+
+/* 768 and up: three columns along one line. */
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap-cols);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .ordinal {
+    line-height: var(--leading-tight);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    align-items: end;
+    gap: var(--gap-cols);
+  }
+}

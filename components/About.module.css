@@ -1,0 +1,103 @@
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block: var(--section-y-lg);
+}
+
+.lead,
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-block);
+  min-width: 0;
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-quote);
+  line-height: var(--leading-quote);
+  letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
+}
+
+.bio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+/* The 390 frame has no second portrait; it appears from 640. */
+.portrait {
+  display: none;
+  position: relative;
+  flex: none;
+  width: var(--portrait-small-width);
+  aspect-ratio: var(--portrait-small-ratio);
+  clip-path: url(#arch-small);
+  background: var(--color-placeholder-ground);
+}
+
+.portrait img {
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: grayscale(1);
+}
+
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--color-silver);
+  text-wrap: pretty;
+}
+
+.facts {
+  margin: 0;
+  border-top: var(--hairline) solid var(--color-rule-on-ink);
+  font-size: var(--text-small);
+  line-height: var(--leading-lead);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: var(--facts-term) minmax(0, 1fr);
+  gap: var(--gap-cols-facts);
+  padding-block: var(--facts-row);
+  border-bottom: var(--hairline) solid var(--color-rule-on-ink);
+}
+
+.facts dt {
+  color: var(--color-muted-on-ink);
+}
+
+.facts dd {
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .portrait {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--gap-cols-wide);
+  }
+}

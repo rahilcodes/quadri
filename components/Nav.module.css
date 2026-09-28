@@ -1,0 +1,243 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-nav);
+  /* transparent over the hero: ink ground, ivory figure */
+  --ground: var(--color-ink);
+  --figure: var(--color-ivory);
+  --button-hover: var(--color-silver);
+  background: transparent;
+  color: var(--color-ivory);
+  border-bottom: var(--hairline) solid transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.scrolled {
+  --ground: var(--color-ivory);
+  --figure: var(--color-ink);
+  --button-hover: var(--color-rule-on-ink);
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  border-bottom-color: var(--color-silver);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding-block: var(--nav-pad-y);
+  transition: padding var(--duration-fast) var(--ease);
+}
+
+.scrolled .bar {
+  padding-block: var(--nav-pad-y-scrolled);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--brand-gap);
+  min-width: 0;
+  font-family: var(--font-serif);
+  font-size: var(--text-brand);
+  line-height: var(--leading-brand);
+  white-space: nowrap;
+}
+
+.header:not(.scrolled) .brand {
+  letter-spacing: var(--tracking-brand);
+}
+
+.mark {
+  flex: none;
+  width: var(--mark-width);
+}
+
+.nameFull {
+  display: none;
+}
+
+.links {
+  display: none;
+}
+
+/* Two 1 px lines, 22 wide, 6 apart (export). The button itself is a 44 px target
+   pulled back with negative margins so the bar keeps the design's height. */
+.burger,
+.close {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--burger-gap);
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  margin: calc((var(--tap) - var(--burger-height)) / -2) calc((var(--tap) - var(--burger-width)) / -2);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+}
+
+.burger span,
+.close span {
+  display: block;
+  width: var(--burger-width);
+  height: var(--hairline);
+  background: currentColor;
+}
+
+.close {
+  gap: 0;
+}
+
+.close span:first-child {
+  transform: translateY(0.5px) rotate(45deg);
+}
+
+.close span:last-child {
+  transform: translateY(-0.5px) rotate(-45deg);
+}
+
+/* ---------- Full-screen overlay menu (below 1024) ---------- */
+.menu {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.menu::backdrop {
+  background: var(--color-ink);
+}
+
+.menu[open] {
+  animation: menu-in var(--duration-fast) var(--ease);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.menuInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  min-height: 100%;
+  padding-bottom: calc(var(--space-10) + env(safe-area-inset-bottom, 0px));
+}
+
+.menuBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--nav-pad-y);
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--hairline) solid var(--color-rule-on-ink);
+}
+
+.menuLinks li {
+  border-bottom: var(--hairline) solid var(--color-rule-on-ink);
+}
+
+.menu[open] .menuLinks li {
+  animation: rise var(--duration) var(--ease) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+.menuLinks a {
+  display: block;
+  padding-block: var(--space-4);
+  font-family: var(--font-serif);
+  font-size: var(--text-menu);
+  line-height: var(--leading-title);
+  letter-spacing: var(--tracking-heading);
+}
+
+.menuFoot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  margin-top: auto;
+}
+
+/* Divider: a hairline with the arch mark at its head. */
+.divider {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  width: 100%;
+  color: var(--color-silver);
+}
+
+.divider::after {
+  content: '';
+  flex: 1;
+  height: var(--hairline);
+  background: var(--color-rule-on-ink);
+}
+
+.menuCta {
+  align-self: stretch;
+}
+
+.menuPhone {
+  font-size: var(--text-body-contact);
+  color: var(--color-ivory);
+}
+
+@media (min-width: 1024px) {
+  .nameShort,
+  .burger {
+    display: none;
+  }
+
+  .nameFull {
+    display: inline;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-gap);
+    font-size: var(--text-nav);
+    color: var(--color-silver);
+  }
+
+  .scrolled .links {
+    color: var(--color-text-on-ivory);
+  }
+
+  .links ul {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-gap);
+  }
+
+  .links li a {
+    transition: color var(--duration-fast) var(--ease);
+  }
+
+  .links li a:hover {
+    color: var(--figure);
+  }
+}

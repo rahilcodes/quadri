@@ -1,0 +1,61 @@
+/* Styled from the "First-visit disclaimer bar" in the style tile: ink ground,
+   silver 13 px text, ivory pill. Built as a modal, as the build rules require. */
+.dialog {
+  width: min(var(--modal-width), calc(100vw - 2 * var(--space-6)));
+  max-height: calc(100dvh - 2 * var(--space-6));
+  margin: auto;
+  padding: var(--card-pad);
+  border: var(--hairline) solid var(--color-rule-on-ink);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  animation: rise var(--duration) var(--ease);
+}
+
+.dialog::backdrop {
+  background: var(--color-scrim);
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+  color: var(--color-silver);
+}
+
+.head h2 {
+  margin: 0;
+  font-weight: var(--weight-regular);
+}
+
+/* the arch divider: mark, then a hairline running to the edge */
+.head::after {
+  content: '';
+  flex: 1;
+  align-self: flex-end;
+  height: var(--hairline);
+  background: var(--color-rule-on-ink);
+}
+
+.text {
+  font-size: var(--text-modal);
+  line-height: var(--leading-relaxed);
+  color: var(--color-silver);
+  text-wrap: pretty;
+}
+
+.accept {
+  align-self: stretch;
+  padding: var(--button-pad-sm);
+}
+
+@media (min-width: 640px) {
+  .accept {
+    align-self: flex-start;
+  }
+}

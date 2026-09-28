@@ -1,0 +1,18 @@
+.hairline {
+  display: block;
+  width: 100%;
+  height: var(--hairline);
+  overflow: visible;
+  stroke: currentColor;
+  stroke-width: var(--hairline);
+}
+
+:global(.js) .hairline line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+:global(.js) .hairline:global(.is-visible) line {
+  animation: draw-stroke var(--duration-draw) var(--ease) forwards;
+  animation-delay: calc(var(--i, 0) * var(--stagger) * 2);
+}

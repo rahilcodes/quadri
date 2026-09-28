@@ -1,0 +1,205 @@
+/* Base (390): portrait on top, copy below, in one column. */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-height: max(100vh, var(--hero-min-height));
+  min-height: max(100svh, var(--hero-min-height));
+  /* export: 20 top + nav row + 24 gap; 92 bottom clears the sticky bar */
+  padding-top: var(--hero-top-compact);
+  padding-bottom: calc(var(--hero-bottom-compact) + env(safe-area-inset-bottom, 0px));
+}
+
+.copy {
+  display: contents;
+}
+
+.figure {
+  position: relative;
+  order: -1;
+  width: 100%;
+  aspect-ratio: var(--portrait-ratio-compact);
+}
+
+.portrait {
+  position: absolute;
+  inset: 0;
+  clip-path: url(#arch-compact);
+  background: var(--color-placeholder-ground);
+}
+
+.portrait img {
+  object-fit: cover;
+  object-position: 50% 20%;
+  filter: grayscale(1);
+}
+
+/* Grain: a CSS overlay, clipped by the same arch. */
+.portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: var(--color-silver);
+  pointer-events: none;
+  opacity: 0;
+}
+
+:global(.js) .outline {
+  opacity: 1;
+  animation: recede var(--duration) var(--ease) var(--duration-draw) forwards;
+}
+
+.outlineTall {
+  display: none;
+}
+
+@keyframes recede {
+  to {
+    opacity: 0;
+  }
+}
+
+.title {
+  max-width: var(--measure-h1);
+  font-family: var(--font-serif);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  letter-spacing: var(--tracking-h1);
+  text-wrap: balance;
+}
+
+.sub {
+  max-width: var(--measure-sub);
+  font-size: var(--text-lead);
+  line-height: var(--leading-lead);
+  color: var(--color-silver);
+  text-wrap: pretty;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.actions :global(.button) {
+  align-self: stretch;
+}
+
+.lockup {
+  margin-top: auto;
+}
+
+.cue {
+  display: none;
+}
+
+/* 640 to 1023: still stacked; the portrait stops growing so the headline stays in the first screen. */
+@media (min-width: 640px) {
+  .figure {
+    width: var(--portrait-width-compact);
+  }
+
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-9);
+  }
+
+  .actions :global(.button) {
+    align-self: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-bottom: var(--space-10);
+  }
+}
+
+/* 1024 and up: 7 / 5 columns, vertically centred, as the 1440 frame. */
+@media (min-width: 1024px) {
+  .inner {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    align-items: center;
+    gap: 0 var(--gap-cols);
+    padding-block: 0;
+  }
+
+  .copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-hero);
+    padding-top: var(--hero-offset);
+  }
+
+  .figure {
+    order: 0;
+    justify-self: end;
+    width: min(100%, var(--portrait-width));
+    margin-top: var(--hero-offset);
+    aspect-ratio: var(--portrait-ratio);
+  }
+
+  .portrait {
+    clip-path: url(#arch-tall);
+  }
+
+  .outlineCompact {
+    display: none;
+  }
+
+  .outlineTall {
+    display: block;
+  }
+
+  .lockup {
+    position: absolute;
+    left: var(--margin);
+    bottom: var(--space-10);
+    margin: 0;
+  }
+
+  .cue {
+    display: block;
+    position: absolute;
+    right: var(--margin);
+    bottom: var(--space-10);
+    width: var(--hairline);
+    height: var(--scroll-cue);
+    background: var(--color-silver);
+    transform-origin: top;
+  }
+
+  :global(.js) .cue {
+    transform: scaleY(0);
+    animation: cue var(--duration-draw) var(--ease) var(--duration) forwards;
+  }
+}
+
+@keyframes cue {
+  to {
+    transform: scaleY(1);
+  }
+}
