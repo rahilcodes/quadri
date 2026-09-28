@@ -133,6 +133,7 @@
       "title": "Map of Narayanguda, Hyderabad, showing the chambers",
       "embed": "https://www.google.com/maps?q=Ashish+Orchids,+Narayanguda,+Hyderabad+500029&z=16&output=embed",
       "link": "https://www.google.com/maps/search/?api=1&query=Ashish+Orchids,+Narayanguda,+Hyderabad+500029",
+      "showLabel": "Show map",
       "linkLabel": "Open in Google Maps"
     },
     "form": {

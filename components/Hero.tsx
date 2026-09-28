@@ -37,6 +37,7 @@ export default function Hero() {
               alt={hero.portrait.alt}
               fill
               priority
+              fetchPriority="high"
               sizes="(min-width: 1440px) 480px, (min-width: 1024px) 34vw, (min-width: 640px) 420px, 100vw"
             />
           </div>

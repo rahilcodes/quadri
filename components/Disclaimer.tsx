@@ -25,7 +25,10 @@ export default function Disclaimer() {
     } catch {
       // storage blocked (private mode): ask on every visit
     }
-    if (!accepted && dialog.current && !dialog.current.open) dialog.current.showModal();
+    if (!accepted && dialog.current && !dialog.current.open) {
+      dialog.current.showModal();
+      document.documentElement.classList.add('dialog-open');
+    }
   }, []);
 
   const accept = () => {
@@ -35,6 +38,7 @@ export default function Disclaimer() {
       // nothing to do: the visitor is simply asked again next time
     }
     dialog.current?.close();
+    document.documentElement.classList.remove('dialog-open');
   };
 
   return (

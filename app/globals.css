@@ -286,6 +286,6 @@ button {
 }
 
 /* No page scroll behind an open dialog (menu or disclaimer). */
-html:has(dialog[open]) {
+html.dialog-open {
   overflow: hidden;
 }

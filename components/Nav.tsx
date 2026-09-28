@@ -41,6 +41,7 @@ export default function Nav() {
   // <dialog>.showModal() supplies the focus trap, Escape to close, and makes the page behind inert.
   const openMenu = () => {
     menu.current?.showModal();
+    document.documentElement.classList.add('dialog-open');
     setOpen(true);
   };
   const closeMenu = () => menu.current?.close();
@@ -84,7 +85,10 @@ export default function Nav() {
         </button>
       </div>
 
-      <dialog ref={menu} className={`${styles.menu} on-ink`} aria-label="Menu" onClose={() => setOpen(false)}>
+      <dialog ref={menu} className={`${styles.menu} on-ink`} aria-label="Menu" onClose={() => {
+          document.documentElement.classList.remove('dialog-open');
+          setOpen(false);
+        }}>
         <div className={`container ${styles.menuInner}`}>
           <div className={styles.menuBar}>
             <span className={styles.brand}>

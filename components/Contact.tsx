@@ -1,4 +1,5 @@
 import ContactForm from './ContactForm';
+import MapEmbed from './MapEmbed';
 import styles from './Contact.module.css';
 import { site } from '@/lib/site';
 
@@ -13,20 +14,7 @@ export default function Contact() {
           <h2 id="contact-title" className="h2">
             {contact.heading}
           </h2>
-          <div className={styles.map} data-reveal="">
-            {/* Below the fold and lazy: no third-party request until the visitor scrolls here. */}
-            <iframe
-              src={contact.map.embed}
-              title={contact.map.title}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-            <a className={styles.mapLink} href={contact.map.link} target="_blank" rel="noopener noreferrer">
-              {contact.map.linkLabel}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
-          </div>
+          <MapEmbed />
         </div>
 
         <div className={styles.body}>
