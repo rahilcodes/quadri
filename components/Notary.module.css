@@ -70,14 +70,19 @@
   line-height: var(--leading-lead);
 }
 
+.hours span {
+  display: inline-block;
+}
+
 .hours h3 {
   margin: 0;
+  line-height: inherit;
   font-weight: var(--weight-regular);
 }
 
 /* Base (export, 390): both sittings on one line, separated by a middle dot. */
-.hours span + span::before {
-  content: ' · ';
+.hours span:not(:last-child)::after {
+  content: '\00a0·\00a0';
 }
 
 @media (min-width: 640px) {
@@ -101,7 +106,7 @@
     display: block;
   }
 
-  .hours span + span::before {
+  .hours span:not(:last-child)::after {
     content: none;
   }
 }

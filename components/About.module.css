@@ -55,21 +55,25 @@
   pointer-events: none;
 }
 
+.summary,
 .paragraphs {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
   font-size: var(--text-body-lg);
   line-height: var(--leading-relaxed);
   color: var(--color-silver);
   text-wrap: pretty;
 }
 
+.paragraphs {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
 .facts {
   margin: 0;
   border-top: var(--hairline) solid var(--color-rule-on-ink);
   font-size: var(--text-small);
-  line-height: var(--leading-lead);
+  line-height: var(--leading-normal-sans);
 }
 
 .facts > div {
@@ -91,6 +95,21 @@
 @media (min-width: 640px) {
   .portrait {
     display: block;
+  }
+
+  .summary {
+    display: none;
+  }
+
+  .paragraphs {
+    display: flex;
+  }
+}
+
+/* 1024 to 1279: the column is too narrow for portrait and text side by side. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .bio {
+    flex-direction: column;
   }
 }
 

@@ -74,6 +74,7 @@
 .group h3 {
   display: none;
   margin: 0;
+  line-height: inherit;
   font-weight: var(--weight-regular);
 }
 
@@ -105,12 +106,18 @@
 .whatsapp {
   display: none;
   align-self: flex-start;
+  padding-bottom: 0;
   font-size: inherit;
+  line-height: inherit;
   color: var(--color-ink);
 }
 
-.hours span + span::before {
-  content: ' · ';
+.hours span {
+  display: inline-block;
+}
+
+.hours span:not(:last-child)::after {
+  content: '\00a0·\00a0';
 }
 
 /* 640 and up: labelled groups, details beside the form. */
@@ -131,6 +138,7 @@
 
   .phones {
     flex-direction: column;
+    gap: var(--space-2);
   }
 
   .phones li + li::before {
@@ -145,7 +153,7 @@
     display: block;
   }
 
-  .hours span + span::before {
+  .hours span:not(:last-child)::after {
     content: none;
   }
 }

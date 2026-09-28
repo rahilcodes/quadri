@@ -15,20 +15,21 @@
 .field select,
 .field textarea {
   width: 100%;
-  min-height: var(--tap);
+  min-height: var(--field-height-compact);
   padding: var(--space-3) 0;
   border: 0;
   border-bottom: var(--hairline) solid var(--color-silver);
   background: transparent;
   color: var(--color-ink);
   font-size: var(--text-field);
-  line-height: var(--leading-lead);
+  line-height: var(--leading-normal-sans);
   appearance: none;
   transition: border-color var(--duration-fast) var(--ease);
 }
 
 .field textarea {
   display: block;
+  height: var(--textarea-height-compact);
   resize: none;
 }
 
@@ -72,7 +73,7 @@
 .select::after {
   content: '';
   position: absolute;
-  top: calc(var(--tap) / 2);
+  top: calc(var(--field-height-compact) / 2);
   right: var(--space-1);
   width: var(--space-2);
   height: var(--space-2);
@@ -128,6 +129,20 @@
 }
 
 @media (min-width: 640px) {
+  .field input,
+  .field select,
+  .field textarea {
+    min-height: var(--tap);
+  }
+
+  .field textarea {
+    height: var(--textarea-height);
+  }
+
+  .select::after {
+    top: calc(var(--tap) / 2);
+  }
+
   .submit {
     align-self: flex-start;
   }

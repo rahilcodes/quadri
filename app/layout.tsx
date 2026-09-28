@@ -34,8 +34,9 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // suppressHydrationWarning: the inline script below adds class="js" before React hydrates
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         {/* The two hero faces. Everything else loads on demand with font-display: swap. */}
         <link

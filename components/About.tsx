@@ -23,6 +23,8 @@ export default function About() {
               <Arch variant="mask" id="arch-small" shape="small" />
               <Image src={hero.portrait.src} alt={about.portraitAlt} fill sizes="160px" loading="lazy" />
             </div>
+            {/* The 390 frame carries a condensed biography; the full text takes over from 640. */}
+            <p className={styles.summary}>{about.summary}</p>
             <div className={styles.paragraphs}>
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>

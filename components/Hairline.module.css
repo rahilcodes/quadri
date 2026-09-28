@@ -16,3 +16,10 @@
   animation: draw-stroke var(--duration-draw) var(--ease) forwards;
   animation-delay: calc(var(--i, 0) * var(--stagger) * 2);
 }
+
+/* CSS Modules scope keyframe names, so the shared animation is declared again here. */
+@keyframes draw-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

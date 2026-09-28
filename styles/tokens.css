@@ -50,7 +50,7 @@
   --text-h2: calc(2.25rem + 20 * var(--t)); /* 36 -> 56 */
   --text-display: calc(2.75rem + 28 * var(--t)); /* notary heading 44 -> 72 */
   --text-quote: calc(2.25rem + 28 * var(--t)); /* 36 -> 64 */
-  --text-numeral: calc(3.5rem + 40 * var(--t)); /* 56 -> 96 */
+  --text-numeral: min(calc(3.5rem + 40 * var(--t)), 14.36vw); /* 56 -> 96; below 390 it scales down with the screen */
   --text-card-title: calc(1.625rem + 8 * var(--t)); /* 26 -> 34 */
   --text-step-title: calc(1.75rem + 12 * var(--t)); /* 28 -> 40 */
   --text-ordinal: calc(0.9375rem + 3 * var(--t)); /* 15 -> 18 */
@@ -73,13 +73,17 @@
   --text-arrow: 1.25rem; /* 20 */
 
   /* ---------- Type: leading and tracking (export) ---------- */
+  /* The export leaves many small elements at line-height: normal. These two values are
+     what "normal" resolves to for each family (ascent + descent), so heights match. */
+  --leading-normal-sans: 1.234;
+  --leading-normal-serif: 1.3;
   --leading-h1: 0.95; /* .92 from 1024, below */
   --leading-tight: 1;
-  --leading-brand: 1.2; /* assumed: the export leaves the name at the browser default */
   --leading-heading: 1.05;
   --leading-quote: 1.1; /* 1.05 from 1024, below */
   --leading-title: 1.1;
-  --leading-nastaliq: 1.4;
+  --leading-nastaliq: normal; /* 1.4 from 768, below */
+  --leading-card: 1.5; /* cards and steps; 1.55 from 1024, below */
   --leading-lead: 1.5;
   --leading-body: 1.55;
   --leading-relaxed: 1.6;
@@ -127,7 +131,7 @@
   --gap-cols-wide: calc(2rem + 64 * var(--t)); /* about / contact split 32 -> 96 */
   --card-pad: calc(1.5rem + 8 * var(--t)); /* 24 -> 32 */
   --card-gap: calc(0.75rem + 16 * var(--t)); /* 12 -> 28 */
-  --card-min-height: 18.75rem; /* 300, grid layouts only */
+  --card-min-height: 22.875rem; /* 366: the export's 300 min-height + 2 x 32 padding + 2 x 1 border (content-box) */
   --facts-term: calc(5.625rem + 50 * var(--t)); /* facts list term column 90 -> 140 */
   --facts-row: calc(0.75rem + 4 * var(--t)); /* 12 -> 16 */
   --field-gap: calc(1.25rem + 8 * var(--t)); /* 20 -> 28 */
@@ -142,7 +146,13 @@
   /* ---------- Layout: fixed (export) ---------- */
   --container: 90rem; /* 1440: content stops growing here; grounds stay full-bleed */
   --hero-min-height: 40rem; /* assumed floor for short landscape viewports */
-  --hero-top-compact: 4.4375rem; /* 71: 20 pad + 27 nav row + 24 gap, stacked hero */
+  --hero-top-compact: 4.25rem; /* 68, measured: 20 pad + 23 nav row + 24 gap, stacked hero */
+  --portrait-gap-compact: 1.25rem; /* 20, measured: the 390 portrait box is 320 tall but clipped at 300 */
+  /* The 390 frame sets min-height 44 on content-box elements, so they render taller.
+     These are the rendered heights. To get 44 px controls instead, set both to var(--tap). */
+  --button-height-compact: 4.5rem; /* 72 */
+  --field-height-compact: 4.3125rem; /* 69 */
+  --textarea-height-compact: 5.0625rem; /* 81: three rows */
   --hero-bottom-compact: 5.75rem; /* 92: clears the sticky bar */
   --contact-offset: 4.75rem; /* 76: aligns details with the map top */
   --modal-width: 35rem; /* assumed: 560 */
@@ -158,7 +168,9 @@
   --portrait-width-compact: 26.25rem; /* assumed: 420 cap between 640 and 1023 */
   --portrait-small-width: 10rem; /* 160 */
   --portrait-small-ratio: 160 / 210;
-  --map-height: calc(11.25rem + 340 * var(--t)); /* 180 -> 520 */
+  /* The export sets 180 / 520 on a content-box with padding and border, so it renders 206 / 562. */
+  --map-height: calc(12.875rem + 356 * var(--t)); /* 206 -> 562 */
+  --textarea-height: 6.375rem; /* 102: four rows, as rendered in the export */
   --scroll-cue: 4.5rem; /* 72 */
   --nav-pad-y: calc(1.25rem + 16 * var(--t)); /* over hero 20 -> 36 */
   --nav-pad-y-scrolled: calc(0.875rem + 6 * var(--t)); /* after scroll 14 -> 20 (14 assumed) */
@@ -210,6 +222,13 @@
   :root {
     --leading-h1: 0.92;
     --leading-quote: 1.05;
+    --leading-card: 1.55;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --leading-nastaliq: 1.4;
   }
 }
 

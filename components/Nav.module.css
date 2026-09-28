@@ -44,7 +44,7 @@
   min-width: 0;
   font-family: var(--font-serif);
   font-size: var(--text-brand);
-  line-height: var(--leading-brand);
+  line-height: var(--leading-normal-serif);
   white-space: nowrap;
 }
 
@@ -220,6 +220,7 @@
     align-items: center;
     gap: var(--nav-gap);
     font-size: var(--text-nav);
+    line-height: var(--leading-normal-sans);
     color: var(--color-silver);
   }
 
@@ -239,5 +240,13 @@
 
   .links li a:hover {
     color: var(--figure);
+  }
+}
+
+/* CSS Modules scope keyframe names, so the shared animation is declared again here. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise));
   }
 }

@@ -32,7 +32,7 @@
   gap: var(--brand-gap);
   font-family: var(--font-serif);
   font-size: var(--text-brand);
-  line-height: var(--leading-brand);
+  line-height: var(--leading-normal-serif);
 }
 
 .mark {
@@ -69,7 +69,7 @@
   padding-top: var(--footer-base);
   border-top: var(--hairline) solid var(--color-rule-on-ink);
   font-size: var(--text-fine);
-  line-height: var(--leading-lead);
+  line-height: var(--leading-normal-sans);
 }
 
 @media (min-width: 768px) {
@@ -84,17 +84,19 @@
   .est,
   .enrolled {
     display: block;
+    white-space: nowrap;
   }
 
   .links {
     display: block;
     font-size: var(--text-nav);
+    line-height: var(--leading-normal-sans);
     color: var(--color-silver);
   }
 
   .links ul {
     display: flex;
-    gap: var(--nav-gap);
+    gap: var(--gap-cols);
   }
 
   .links a {

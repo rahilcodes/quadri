@@ -128,7 +128,7 @@ button {
 .label {
   font-size: var(--text-label);
   letter-spacing: var(--tracking-label);
-  line-height: var(--leading-lead);
+  line-height: var(--leading-normal-sans);
   text-transform: uppercase;
   color: var(--label, var(--color-muted-on-ivory));
 }
@@ -155,7 +155,7 @@ button {
   color: var(--ground);
   font-size: var(--text-button);
   font-weight: var(--weight-medium);
-  line-height: 1;
+  line-height: var(--leading-normal-sans);
   white-space: nowrap;
   transition: background-color var(--duration-fast) var(--ease);
 }
@@ -175,6 +175,7 @@ button {
   display: inline-block;
   padding-bottom: var(--link-offset);
   font-size: var(--text-button);
+  line-height: var(--leading-normal-sans);
 }
 
 .link::after {

@@ -58,7 +58,7 @@
 .text {
   grid-area: text;
   font-size: var(--text-body);
-  line-height: var(--leading-body);
+  line-height: var(--leading-card);
   color: var(--color-text-on-ivory);
   text-wrap: pretty;
 }
@@ -83,7 +83,7 @@
   }
 
   .ordinal {
-    line-height: var(--leading-tight);
+    line-height: var(--leading-normal-serif);
   }
 }
 

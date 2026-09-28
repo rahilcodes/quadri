@@ -11,3 +11,4 @@ next-env.d.ts
 .DS_Store
 lighthouse-*.json
 lighthouse-*.html
+.screens

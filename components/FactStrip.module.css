@@ -2,10 +2,12 @@
   border-bottom: var(--hairline) solid var(--color-silver);
 }
 
-/* Base: 2 x 2 with a silver cross between the cells. */
+/* Base: 2 x 2 with a silver cross between the cells. The last column is sized by
+   "HC + CCC": in the export that word is wider than its cell and spills into the
+   margin, so the columns give it the room instead. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) minmax(0, max-content);
   margin-block: 0;
   padding-block: var(--strip-y);
 }
@@ -40,14 +42,17 @@
   font-variant-numeric: lining-nums;
 }
 
+/* width 0 + min-width 100%: the caption wraps inside its column but never sets the column width */
 .caption {
+  width: 0;
+  min-width: 100%;
   text-wrap: balance;
 }
 
 /* 1024 and up: four across, rules between. */
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, max-content);
   }
 
   .fact,

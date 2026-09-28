@@ -23,6 +23,13 @@ const MARK_RATIO = 48 / 40;
  *   compact  342 x 300  M0 300 V150 C0 50 135 18 171 0 C207 18 342 50 342 150 V300 Z
  *   small    160 x 210  M0 210 V80 C0 24 64 9 80 0 C96 9 160 24 160 80 V210 Z
  */
+/** The same outlines in the export's own units, for stroking (a stretched 1 x 1 box would distort the stroke). */
+const OUTLINES = {
+  tall: { viewBox: '0 0 480 620', d: 'M0 620V240C0 70 190 26 240 0C290 26 480 70 480 240V620' },
+  compact: { viewBox: '0 0 342 300', d: 'M0 300V150C0 50 135 18 171 0C207 18 342 50 342 150V300' },
+  small: { viewBox: '0 0 160 210', d: 'M0 210V80C0 24 64 9 80 0C96 9 160 24 160 80V210' },
+} as const;
+
 const SHAPES = {
   tall: 'M0 1V.3871C0 .1129 .3958 .0419 .5 0C.6042 .0419 1 .1129 1 .3871V1',
   compact: 'M0 1V.5C0 .1667 .3947 .06 .5 0C.6053 .06 1 .1667 1 .5V1',
@@ -32,7 +39,7 @@ const SHAPES = {
 export type ArchShape = keyof typeof SHAPES;
 
 type Common = {
-  /** Draw the stroke on load or when a parent becomes visible (see Arch.module-free CSS in globals). */
+  /** Add "arch-draw" to make the stroke draw itself on load (app/globals.css). */
   className?: string;
   style?: CSSProperties;
 };
@@ -49,7 +56,7 @@ type MarkProps = Common & {
 type OutlineProps = Common & {
   variant: 'outline';
   shape?: ArchShape;
-  /** Stroke width in CSS px; it does not scale with the box. */
+  /** Stroke width in the export's units: 1 is one pixel at the design size. */
   stroke?: number | string;
 };
 
@@ -80,7 +87,7 @@ export default function Arch(props: ArchProps) {
       <svg
         className={className}
         style={style}
-        viewBox="0 0 1 1"
+        viewBox={OUTLINES[shape].viewBox}
         preserveAspectRatio="none"
         fill="none"
         stroke="currentColor"
@@ -88,7 +95,7 @@ export default function Arch(props: ArchProps) {
         aria-hidden="true"
         focusable="false"
       >
-        <path d={SHAPES[shape]} pathLength={1} vectorEffect="non-scaling-stroke" data-arch-path="" />
+        <path d={OUTLINES[shape].d} pathLength={1} data-arch-path="" />
       </svg>
     );
   }

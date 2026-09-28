@@ -59,3 +59,11 @@
     align-self: flex-start;
   }
 }
+
+/* CSS Modules scope keyframe names, so the shared animation is declared again here. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise));
+  }
+}

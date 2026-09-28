@@ -25,6 +25,7 @@
   order: -1;
   width: 100%;
   aspect-ratio: var(--portrait-ratio-compact);
+  margin-bottom: var(--portrait-gap-compact);
 }
 
 .portrait {
@@ -104,10 +105,11 @@
 
 .actions :global(.button) {
   align-self: stretch;
+  min-height: var(--button-height-compact);
 }
 
 .lockup {
-  margin-top: auto;
+  margin: 0;
 }
 
 .cue {
@@ -128,6 +130,12 @@
 
   .actions :global(.button) {
     align-self: auto;
+    min-height: var(--tap);
+  }
+
+  /* with room to spare, the lock-up sits at the foot of the hero as it does on desktop */
+  .lockup {
+    margin-top: auto;
   }
 }
 
@@ -159,6 +167,7 @@
     justify-self: end;
     width: min(100%, var(--portrait-width));
     margin-top: var(--hero-offset);
+    margin-bottom: 0;
     aspect-ratio: var(--portrait-ratio);
   }
 

@@ -54,7 +54,7 @@
   grid-area: ordinal;
   font-family: var(--font-serif);
   font-size: var(--text-ordinal);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-normal-serif);
   color: var(--color-muted-on-ivory);
 }
 
@@ -65,20 +65,21 @@
   font-size: var(--text-card-title);
   line-height: var(--leading-title);
   letter-spacing: var(--tracking-heading);
+  text-wrap: balance;
 }
 
 .desc {
   grid-area: desc;
   font-size: var(--text-body);
-  line-height: var(--leading-body);
+  line-height: var(--leading-card);
   color: var(--color-text-on-ivory);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .arrow {
   grid-area: arrow;
   font-size: var(--text-ordinal);
-  line-height: var(--leading-tight);
+  line-height: var(--leading-normal-serif);
   transition: transform var(--duration-fast) var(--ease);
 }
 
