@@ -45,6 +45,12 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} {footer.copyright}
           </p>
+          <p className={styles.developer}>
+            Developed by{' '}
+            <a href="https://creativals.com" target="_blank" rel="noopener noreferrer" className={styles.developerLink}>
+              Creativals.com
+            </a>
+          </p>
           <p className={styles.enrolled}>{footer.enrolled}</p>
         </div>
       </div>

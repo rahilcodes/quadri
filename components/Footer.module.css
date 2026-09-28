@@ -64,12 +64,24 @@
 
 .base {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--space-6);
+  gap: var(--space-4);
   padding-top: var(--footer-base);
   border-top: var(--hairline) solid var(--color-rule-on-ink);
   font-size: var(--text-fine);
   line-height: var(--leading-normal-sans);
+}
+
+.developerLink {
+  color: var(--color-silver);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.developerLink:hover {
+  color: var(--color-ivory);
 }
 
 @media (min-width: 768px) {
