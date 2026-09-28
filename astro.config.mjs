@@ -3,7 +3,8 @@ import react from '@astrojs/react';
 import { defineConfig } from 'astro/config';
 
 const content = JSON.parse(readFileSync(new URL('./content/site.json', import.meta.url), 'utf8'));
-const site = (process.env.PUBLIC_SITE_URL || content.url).replace(/\/+$/, '');
+const site = (process.env.PUBLIC_SITE_URL || (process.env.GITHUB_ACTIONS ? 'https://rahilcodes.github.io' : content.url)).replace(/\/+$/, '');
+const base = process.env.GITHUB_ACTIONS ? '/quadri/' : '/';
 
 /**
  * The contact endpoint is a serverless function in production (api/contact.ts on
@@ -35,6 +36,7 @@ const contactApiInDev = {
 
 export default defineConfig({
   site,
+  base,
   output: 'static',
   trailingSlash: 'ignore',
   // React renders the components to HTML at build time; no React runtime is sent to the browser.
