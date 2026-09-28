@@ -46,7 +46,6 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-  filter: grayscale(1);
 }
 
 .portrait::after {

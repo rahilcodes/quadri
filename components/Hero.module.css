@@ -42,7 +42,6 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-  filter: grayscale(1);
 }
 
 /* Grain: a CSS overlay, clipped by the same arch. */
