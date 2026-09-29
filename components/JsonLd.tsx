@@ -27,7 +27,7 @@ export default function JsonLd() {
     })),
     ...(site.email ? { email: site.email } : {}),
     foundingDate: site.founded,
-    founder: { '@type': 'Person', name: site.advocate, jobTitle: 'Advocate and Notary' },
+    founder: { '@type': 'Person', name: site.advocate, jobTitle: 'Advocate' },
     address: {
       '@type': 'PostalAddress',
       streetAddress: contact.address.street,

@@ -4,8 +4,8 @@
   "url": "https://quadriadvocates.in",
   "_url": "PLACEHOLDER domain. Set the real one here, or set PUBLIC_SITE_URL in the host's environment.",
 
-  "name": "Quadri Advocates & Associates",
-  "shortName": "Quadri Advocates",
+  "name": "Quadri Law Firm",
+  "shortName": "Quadri Law Firm",
   "lockup": "Est. 1997 · Narayanguda, Hyderabad",
   "founded": "1997",
   "advocate": "Mohd. Moin Ahmed Quadri",
@@ -13,15 +13,14 @@
   "_email": "No public email supplied yet. Add one here and it appears in the structured data.",
 
   "meta": {
-    "title": "Quadri Advocates & Associates | Advocates & Notary, Narayanguda, Hyderabad",
-    "description": "A Hyderabad chambers established in 1997 for civil, criminal, family, consumer and commercial matters, and notarial services. Narayanguda, Hyderabad."
+    "title": "Quadri Law Firm | Advocates, Narayanguda, Hyderabad",
+    "description": "A Hyderabad chambers established in 1997 for civil, criminal, family, consumer and commercial matters. Narayanguda, Hyderabad."
   },
 
   "nav": {
     "links": [
       { "label": "Practice", "href": "#practice" },
       { "label": "About", "href": "#about" },
-      { "label": "Notary", "href": "#notary" },
       { "label": "Contact", "href": "#contact" }
     ],
     "cta": { "label": "Book a consultation", "href": "#contact" }
@@ -29,7 +28,7 @@
 
   "hero": {
     "headline": "Counsel since 1997.",
-    "sub": "A Hyderabad chambers for civil, criminal, family and commercial matters, led by an advocate and notary with 29 years at the Bar.",
+    "sub": "A Hyderabad chambers for civil, criminal, family and commercial matters, led by an advocate with 29 years at the Bar.",
     "primary": { "label": "Book a consultation", "href": "#contact" },
     "secondary": { "label": "Our practice", "href": "#practice" },
     "portrait": {
@@ -53,7 +52,7 @@
       { "n": "03", "title": "Family & Matrimonial", "desc": "Divorce, maintenance, domestic violence and custody." },
       { "n": "04", "title": "Consumer & Insurance", "desc": "Consumer forum complaints, insurance claims and accident claims." },
       { "n": "05", "title": "Corporate & Commercial", "desc": "Company law, small-business disputes, debt settlement and IP litigation." },
-      { "n": "06", "title": "Notary, Wills & Estates", "desc": "Notarisation, attestation, affidavits, powers of attorney, will drafting and probate." }
+      { "n": "06", "title": "Wills & Estates", "desc": "Will drafting, trusts, estate planning and probate." }
     ]
   },
 
@@ -65,7 +64,7 @@
     "_summary": "Shown on phones (below 640 px) in place of the three paragraphs.",
     "paragraphs": [
       "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana, the Hyderabad City Civil Court and the consumer fora.",
-      "The chambers take civil, criminal, family, consumer and commercial matters, and provide notarial services. Every client meets Mr. Quadri himself.",
+      "The chambers take civil, criminal, family, consumer and commercial matters. Every client meets Mr. Quadri himself.",
       "Chambers sit in the evening, after court hours, so that clients can attend after their own working day."
     ],
     "_paragraphs": "Enrolment year is unconfirmed (the brief only verifies the firm was established in 1997). Confirm with the client.",
@@ -88,15 +87,6 @@
     ]
   },
 
-  "notary": {
-    "label": "Notary",
-    "headingLines": ["Notary &", "attestation"],
-    "lead": "Notarisation, attestation, affidavits, agreements, powers of attorney and declarations. Walk in during chamber hours or call ahead.",
-    "services": ["Notarisation", "Affidavits", "Agreements", "Powers of attorney", "Declarations", "Attestation"],
-    "hoursLabel": "Walk-in hours",
-    "cta": "Call ahead"
-  },
-
   "contact": {
     "label": "Contact",
     "heading": "Book a consultation.",
@@ -116,6 +106,7 @@
     "phoneLabel": "Telephone",
     "phones": [
       { "display": "+91 93910 39381", "tel": "+919391039381" },
+      { "display": "+91 95020 51489", "tel": "+919502051489" },
       { "display": "092461 08014", "tel": "+919246108014" }
     ],
     "whatsapp": { "label": "WhatsApp", "href": "https://wa.me/919391039381" },
@@ -127,7 +118,7 @@
     ],
     "_hours": "Listings disagree (7 pm vs 7:30 pm). Confirm with the client.",
     "map": {
-      "title": "Map of Narayanguda, Hyderabad, showing Quadri Advocates and Associates",
+      "title": "Map of Narayanguda, Hyderabad, showing Quadri Law Firm",
       "embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.859105577315!2d78.48677737516512!3d17.396059783492614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9922c63441ed%3A0xeceb53a8cd125e16!2sQuadri%20Advocates%20and%20Associates!5e1!3m2!1sen!2sin!4v1790695198301!5m2!1sen!2sin",
       "link": "https://www.google.com/maps/place/Quadri+Advocates+and+Associates/@17.3959006,78.4888631,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9922c63441ed:0xeceb53a8cd125e16!8m2!3d17.3959006!4d78.4888631!16s%2Fg%2F11sbw8msx8",
       "showLabel": "Show map",
@@ -156,14 +147,14 @@
     "glyph": "قادری",
     "glyphLabel": "Quadri, written in Urdu",
     "enrolled": "Enrolled with the Bar Council of Telangana",
-    "copyright": "Quadri Advocates & Associates",
+    "copyright": "Quadri Law Firm",
     "developer": "Creativals.com",
     "developerUrl": "https://creativals.com"
   },
 
   "disclaimer": {
     "title": "Disclaimer",
-    "text": "The Bar Council of India does not permit advocates to solicit work or advertise. By accessing this website you acknowledge that you are seeking information about Quadri Advocates & Associates of your own accord, that there has been no solicitation, advertisement or inducement by the firm or its members, and that the information here is provided for general reference only and does not constitute legal advice or create an advocate–client relationship. The firm confirms the information on this website is true and accurate to the best of its knowledge.",
+    "text": "The Bar Council of India does not permit advocates to solicit work or advertise. By accessing this website you acknowledge that you are seeking information about Quadri Law Firm of your own accord, that there has been no solicitation, advertisement or inducement by the firm or its members, and that the information here is provided for general reference only and does not constitute legal advice or create an advocate–client relationship. The firm confirms the information on this website is true and accurate to the best of its knowledge.",
     "accept": "I understand",
     "_text": "Standard wording from the brief. To be approved by the client or a colleague at the Bar."
   }
