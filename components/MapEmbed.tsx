@@ -11,11 +11,18 @@ export default function MapEmbed() {
   const { map } = site.contact;
 
   return (
-    <div className={styles.map} data-reveal="" data-map="" data-map-src={map.embed} data-map-title={map.title}>
+    <div className={styles.map} data-reveal="">
+      <iframe
+        src={map.embed}
+        title={map.title}
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
       <div className={styles.mapActions}>
-        <button type="button" className={styles.mapLink} data-map-show="" hidden>
-          {map.showLabel}
-        </button>
         <a className={styles.mapLink} href={map.link} target="_blank" rel="noopener noreferrer">
           {map.linkLabel}
           <span className="sr-only"> (opens in a new tab)</span>
