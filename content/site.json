@@ -40,7 +40,7 @@
     { "value": "1997", "countTo": 1997, "label": "Established" },
     { "value": "29", "countTo": 29, "label": "Years at the Bar" },
     { "value": "6", "countTo": 6, "label": "Practice areas" },
-    { "value": "HC + CCC", "countTo": null, "label": "High Court + City Civil Court" }
+    { "value": "High Court", "countTo": null, "label": "High Court of Telangana" }
   ],
 
   "practice": {
@@ -60,10 +60,10 @@
     "label": "About the advocate",
     "quote": "Every matter is someone's life. We treat it that way.",
     "_quote": "To be approved by the client.",
-    "summary": "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana, the Hyderabad City Civil Court and the consumer fora. Every client meets Mr. Quadri himself.",
+    "summary": "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana. Every client meets Mr. Quadri himself.",
     "_summary": "Shown on phones (below 640 px) in place of the three paragraphs.",
     "paragraphs": [
-      "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana, the Hyderabad City Civil Court and the consumer fora.",
+      "Mohd. Moin Ahmed Quadri enrolled at the Bar in 1997 and has practised from Narayanguda since. He appears before the High Court for the State of Telangana.",
       "The chambers take civil, criminal, family, consumer and commercial matters. Every client meets Mr. Quadri himself.",
       "Chambers sit in the evening, after court hours, so that clients can attend after their own working day."
     ],
@@ -71,7 +71,7 @@
     "portraitAlt": "Mohd. Moin Ahmed Quadri",
     "facts": [
       { "term": "Enrolled", "detail": "Bar Council of Telangana" },
-      { "term": "Courts", "detail": "High Court for the State of Telangana · Hyderabad City Civil Court · Consumer fora" },
+      { "term": "Courts", "detail": "High Court for the State of Telangana" },
       { "term": "Languages", "detail": "English · Telugu · Hindi · Urdu" }
     ],
     "_facts": "Languages to be confirmed by the client. Add the enrolment number to the 'Enrolled' row when supplied."
