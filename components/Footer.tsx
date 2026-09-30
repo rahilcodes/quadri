@@ -30,10 +30,15 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Decorative mark. role="img" gives it one spoken name instead of five letters. */}
-          <p className={styles.glyph} lang="ur" dir="rtl" role="img" aria-label={footer.glyphLabel}>
-            {footer.glyph}
-          </p>
+          {/* Decorative language marks */}
+          <div className={styles.glyphs}>
+            <span className={styles.glyphTelugu} lang="te" role="img" aria-label={footer.glyphTeluguLabel}>
+              {footer.glyphTelugu}
+            </span>
+            <span className={styles.glyph} lang="ur" dir="rtl" role="img" aria-label={footer.glyphLabel}>
+              {footer.glyph}
+            </span>
+          </div>
         </div>
 
         {/* Bar Council of India, Rule 36: the entry disclaimer, repeated in full. */}

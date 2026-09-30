@@ -47,6 +47,21 @@
   display: none;
 }
 
+.glyphs {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex: none;
+}
+
+.glyphTelugu {
+  font-family: var(--font-serif);
+  font-size: calc(var(--text-glyph) * 0.55);
+  line-height: 1;
+  color: var(--color-silver);
+  font-weight: 400;
+}
+
 .glyph {
   flex: none;
   font-family: var(--font-nastaliq);
